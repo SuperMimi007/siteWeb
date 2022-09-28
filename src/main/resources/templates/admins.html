@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des admins</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h2>Gestion des admins</h2></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/admins/new}" style="color:darkslategrey;">Ajout d'un admin</a>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]];
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Job</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="admin : ${listAdmins}">
+                <tr>
+                    <td>[[${admin.id}]]</td>
+                    <td>[[${admin.name}]]</td>
+                    <td>[[${admin.job}]]</td>
+                    <td>
+                        <a class="h4 mr-2" th:href="@{'/admins/edit/'+${admin.id}}"
+                           style="color:darkslategrey;">Modifier</a>
+                        <a class="h4 mr-3" th:href="@{'/admins/delete/'+${admin.id}}" style="color:darkslategrey;">Supprimer</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
