@@ -1,0 +1,144 @@
+/*BANDEAU DU HAUT */
+
+
+body{
+    height: 1000px;
+    width: 1680px;
+
+}
+#logo_img {
+    float: left;
+    width : 100px;
+    height : auto;
+    border-radius: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.bannerTop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #B3CC9A;
+    top: 0;
+    height : 70px;
+}
+
+nav h1 {
+    margin-top: 10px;
+    color : #222E13;
+    font-size: 50px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+nav .bannerTop {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav .bannerTop a{
+    font-size: 35px;
+    margin-right: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-style: italic;
+    text-decoration: none;
+}
+
+/*BANDEAU CONNEXION */
+
+.bannerConnection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #222E13;
+    height : 70px;
+}
+
+h2{
+    color : #FFFFFF;
+    font-size: 35px;
+    font-style: italic;
+    margin-left: 110px;
+    padding-top: 12px;
+}
+
+form{
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+#buttonConnect{
+    border-radius: 30px;
+    background-color : #B3CC9A;
+    font-weight: bold;
+    vertical-align: middle;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+label{
+    font-size: 20px;
+    margin-right: 20px;
+    color: #FFFFFF;
+}
+
+/*BANDEAU DU MILIEU */
+
+.bannerMiddle {
+    display: flex;
+}
+
+.block1{
+    text-align:left ;
+}
+
+
+#middle_img{
+    height:415px;
+    float: right;
+}
+
+
+
+/*BANDEAU DU BAS */
+
+.bannerFooter{
+    background-color: #222E13;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    top: 0;
+    height : 70px;
+}
+
+.contact{
+    font-size: 20px;
+    margin-right: 20px;
+    color: #FFFFFF;
+}
+
+nav .lien {
+    display: flex;
+    margin-top: 17px;
+
+}
+nav .lien a{
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
+
+
+
+
