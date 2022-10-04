@@ -17,6 +17,11 @@ public class AdminController {
     @Autowired
     private AdminService service;
 
+    @GetMapping("/adminPage")
+    public String showAdminPage(){
+        return"adminPage";
+    }
+
     @GetMapping("/admins")
     public String showAdminList(@RequestParam(defaultValue = "Admin") String titleName, Model model, ModelMap modelMap) {
         modelMap.put("titleName",titleName);

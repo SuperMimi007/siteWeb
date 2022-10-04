@@ -2,50 +2,54 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Un amour de chien</title>
+    <title>A propos</title>
     <link th:href="@{/main.css}" rel="stylesheet"/>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
+<nav>
+    <div class="bannerTop">
+        <img th:src="@{images/logo.jpg}" id="logo_img"/>
+        <h1>Un amour de chien 93</h1>
+        <a th:href="@{/home}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-house-door"
+                 viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+            </svg>
+        </a>
+    </div>
+</nav>
 
-<div class="bannerTop">
-    <img th:src="@{images/logo.jpg}" id="logo_img"/>
-    <h1>Un amour de chien 93</h1>
-    <a th:href="@{/propos}">A propos</a>
-</div>
 
 <div class="bannerConnection">
     <div id="titre1"><h2>Education Canine</h2></div>
-        <div id="titre2"><form>
-        <label>Nom :</label>
-        <label>Password :</label>
-        <button id="buttonConnect" type="submit">Connexion</button>
-    </form>
+    <div id="titre2"><h2>A propos</h2></div>
+</div>
+<div class="bannerMiddlePropos">
+    <div class="block1Propos">
+        <p class="b1Propos">Titulaire du CCAD délivré par l’école vétérinaire de Maison Alfort.<br/>
+            Formation en médiation animale et en éducation canine.<br/>
+            Basée à Noisy le Grand (Seine saint Denis).<br/>
+            Je suis mobile sur les départements du (77, 93 et 94).</p>
+        <br/>
+        <p>Pour toute question  n'hésitez pas à me contacter</p>
+    </div>
+    <div class="block2Propos">
+        <div class="col-12">
+            <div class="row1">
+                <a th:href="@{/conseils}" class="col col-6"><p class="prestaLien">Conseils à l’arrivée de votre compagnon</p></a>
+                <a th:href="@{/cours}"class="col col-6"><p class="prestaLien">Cours d’éducation canine personnalisé</p></a>
+            </div>
+            <div class="row2">
+                <a th:href="@{/balades}" class="col col-6 "><p class="prestaLien">Balades éducatives</p></a>
+                <a th:href="@{/coaching}" class="col col-6"><p class="prestaLien"> Coaching à domicile</p></a>
+            </div>
         </div>
+    </div>
 </div>
 
-<div class="bannerMiddle">
-    <div class="block1">
-        <p class="presentation">Je m’appelle Myriam, <br/>
-            je vous propose de contribuer à développer une entente harmonieuse faite de complicité
-            et d’une bonne qualité relationnelle avec votre fidèle compagnon.<br/>
-            J’ai acquis des bases solides en matière de coaching canin auprès de formateurs qualifiés, reconnus ayant
-            pour vocation de répondre au bien-être de votre ami canin, tout en lui inculquant des bases éducatives qui
-            ont fait leurs preuves.<br/>
-            Afin de vous permettre de passer de nombreuses années auprès de votre compagnon
-            en parfaite harmonie, je vous propose un service personnalisé (adéquation avec votre mode de vie tout en
-            respectant votre ami canin) afin de vous aider à créer un lien privilégié et de qualité.</p>
-        <br/>
-        <p>N’hésitez pas à me contacter pour toutes questions.</p>
-        <br/>
-        <img th:src="@{images/signature.png}" id="sign_img"/>
-    </div>
-    <div class="block2">
-        <img th:src="@{images/image3.jpeg}" id="middle_img"/>
-    </div>
-</div>
 
 <div class="bannerFooter">
     <div class="contact">

@@ -1,11 +1,9 @@
-/*BANDEAU DU HAUT */
 
 
-body{
-    height: 1000px;
-    width: 1680px;
+/*--------------------- HOME PAGE ---------------------*/
+    /*BANDEAU DU HAUT */
 
-}
+
 #logo_img {
     float: left;
     width : 100px;
@@ -24,47 +22,63 @@ body{
     height : 70px;
 }
 
-nav h1 {
-    margin-top: 10px;
+.bannerTop h1 {
+    vertical-align: center;
     color : #222E13;
     font-size: 50px;
     font-weight: bold;
     font-style: italic;
+    float: left;
 }
 
-nav .bannerTop {
+.bannerTop {
     display: flex;
     flex-wrap: wrap;
 }
 
-nav .bannerTop a{
+.bannerTop a{
     font-size: 35px;
     margin-right: 20px;
-    margin-top: 5px;
+    vertical-align: center;
     cursor: pointer;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #222E13;
     font-style: italic;
     text-decoration: none;
 }
 
 /*BANDEAU CONNEXION */
 
-.bannerConnection {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.bannerConnection{
+    width: 100%;
     background-color: #222E13;
-    height : 70px;
+    background-repeat: repeat-x;
+    height: 70px;
 }
 
-h2{
+#titre1{
+    float: left;
+    min-width:125px;
+    position: fixed;
     color : #FFFFFF;
     font-size: 35px;
     font-style: italic;
     margin-left: 110px;
-    padding-top: 12px;
+    padding-top: 10px;
 }
+
+#titre2{
+    float: left;
+    padding-left: 40%;
+    min-width:125px;
+    position: fixed;
+    color : #FFFFFF;
+    font-size: 35px;
+    font-style: italic;
+    padding-top: 10px;
+    }
+
+
 
 form{
     margin-top: 15px;
@@ -88,17 +102,24 @@ label{
 
 /*BANDEAU DU MILIEU */
 
+
 .bannerMiddle {
     display: flex;
 }
 
 .block1{
+    padding:30px;
     text-align:left ;
+    width: 50%;
+}
+
+.block2{
+    width: 50%;
 }
 
 
 #middle_img{
-    height:415px;
+    height:500px;
     float: right;
 }
 
@@ -119,6 +140,8 @@ label{
     font-size: 20px;
     margin-right: 20px;
     color: #FFFFFF;
+    font-style: italic;
+
 }
 
 nav .lien {
@@ -137,8 +160,106 @@ nav .lien a{
 }
 
 
+/* --------------------- A PROPOS --------------------- */
+
+/*BANDEAU CONNEXION */
+
+#connectPropos{
+    color : #FFFFFF;
+    font-size: 35px;
+    font-style: italic;
+    margin-left: 110px;
+    padding-top: 12px;
+    padding-right :5px;
+
+}
 
 
 
 
+/*BANDEAU DU MILIEU */
+#propos_img{
+    height: 200px;
+    width: auto;
+}
 
+
+.block2Propos{
+    padding-left: 250px;
+    }
+
+.bannerMiddlePropos {
+    display: flex;
+    padding:5px;
+}
+
+.block1Propos{
+    width: 50%;
+    padding: 50px;
+}
+
+.row1{
+    display: flex;
+    padding-bottom: 10px;
+}
+.col{
+    background-image: url("images/batman.jpeg");
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+
+.row2{
+    display: flex;
+    padding-bottom: 10px;
+}
+
+
+.prestaLien{
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 25px;
+    padding-top: 55px;
+    text-align: center;
+}
+
+
+/* --------------------- PRESTATIONS --------------------- */
+
+
+.bannerMiddleCons{
+    display: flex;
+}
+
+.block1Cons{
+    width: 30%;
+}
+.timingCons{
+color: #B3CC9A;
+}
+
+.titreCons{
+    font-weight: bold;
+}
+
+#conseilsImage{
+    padding: 10px;
+    display: block;
+    margin: 0px auto;
+}
+
+.block2Cons{
+padding-top:50px;
+justify-content: center;
+}
+
+#titPrins{
+    vertical-align: center;
+    background-color: #B3CC9A;
+    background-size: 50%;
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 60px;
+    width: 340px;
+    text-align: center;
+
+}
