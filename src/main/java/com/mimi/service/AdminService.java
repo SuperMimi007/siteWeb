@@ -1,5 +1,6 @@
-package com.mimi.admin;
+package com.mimi.service;
 
+import com.mimi.data.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

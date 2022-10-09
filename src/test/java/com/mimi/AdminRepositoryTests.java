@@ -1,7 +1,7 @@
 package com.mimi;
 
-import com.mimi.admin.Admin;
-import com.mimi.admin.AdminRepository;
+import com.mimi.service.Admin;
+import com.mimi.data.AdminRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

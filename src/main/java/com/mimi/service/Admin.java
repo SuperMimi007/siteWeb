@@ -1,4 +1,4 @@
-package com.mimi.admin;
+package com.mimi.service;
 
 import javax.persistence.*;
 

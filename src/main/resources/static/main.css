@@ -17,9 +17,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: #B3CC9A;
+    background-color: #c3e6cb;
     top: 0;
     height : 70px;
+    width: 100%;
 }
 
 .bannerTop h1 {
@@ -28,13 +29,9 @@
     font-size: 50px;
     font-weight: bold;
     font-style: italic;
-    float: left;
+
 }
 
-.bannerTop {
-    display: flex;
-    flex-wrap: wrap;
-}
 
 .bannerTop a{
     font-size: 35px;
@@ -87,7 +84,7 @@ form{
 
 #buttonConnect{
     border-radius: 30px;
-    background-color : #B3CC9A;
+    background-color : #c3e6cb;
     font-weight: bold;
     vertical-align: middle;
     font-size: 20px;
@@ -138,16 +135,22 @@ label{
 
 .contact{
     font-size: 20px;
-    margin-right: 20px;
     color: #FFFFFF;
     font-style: italic;
+}
 
+.infos a{
+    margin-right: 10px;
+}
+
+.infos{
+   display: flex;
+    margin-left: 10px;
 }
 
 nav .lien {
     display: flex;
     margin-top: 17px;
-
 }
 nav .lien a{
     color: #FFFFFF;
@@ -171,10 +174,7 @@ nav .lien a{
     margin-left: 110px;
     padding-top: 12px;
     padding-right :5px;
-
 }
-
-
 
 
 /*BANDEAU DU MILIEU */
@@ -182,11 +182,6 @@ nav .lien a{
     height: 200px;
     width: auto;
 }
-
-
-.block2Propos{
-    padding-left: 250px;
-    }
 
 .bannerMiddlePropos {
     display: flex;
@@ -198,30 +193,35 @@ nav .lien a{
     padding: 50px;
 }
 
-.row1{
-    display: flex;
-    padding-bottom: 10px;
+.block2Propos{
+    display:flex;
+    }
+
+.row{
+    width: 476px;
+    height: auto;
+    padding-right: 10px;
 }
-.col{
+.carrePresta{
+    width: 476px;
+    height: auto;
     background-image: url("images/batman.jpeg");
     background-repeat: no-repeat;
-    text-decoration: none;
-}
-
-.row2{
-    display: flex;
-    padding-bottom: 10px;
 }
 
 
 .prestaLien{
     font-weight: bold;
+    text-decoration: none;
     color: #FFFFFF;
     font-size: 25px;
     padding-top: 55px;
     text-align: center;
+
 }
 
+p{
+    text-decoration: none;}
 
 /* --------------------- PRESTATIONS --------------------- */
 
@@ -234,7 +234,7 @@ nav .lien a{
     width: 30%;
 }
 .timingCons{
-color: #B3CC9A;
+color: #c3e6cb;
 }
 
 .titreCons{
@@ -254,7 +254,7 @@ justify-content: center;
 
 #titPrins{
     vertical-align: center;
-    background-color: #B3CC9A;
+    background-color: #c3e6cb;
     background-size: 50%;
     color: #FFFFFF;
     font-weight: bold;
