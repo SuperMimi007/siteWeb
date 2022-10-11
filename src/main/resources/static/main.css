@@ -29,7 +29,6 @@
     font-size: 50px;
     font-weight: bold;
     font-style: italic;
-
 }
 
 
@@ -47,55 +46,33 @@
 /*BANDEAU CONNEXION */
 
 .bannerConnection{
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     background-color: #222E13;
-    background-repeat: repeat-x;
+    top: 0;
+    width: 100%;
     height: 70px;
 }
-
-#titre1{
-    float: left;
-    min-width:125px;
-    position: fixed;
+.bannerConnection h2 {
+    vertical-align: center;
     color : #FFFFFF;
     font-size: 35px;
+    padding-top: 10px;
     font-style: italic;
     margin-left: 110px;
-    padding-top: 10px;
 }
 
-#titre2{
-    float: left;
-    padding-left: 40%;
-    min-width:125px;
-    position: fixed;
-    color : #FFFFFF;
-    font-size: 35px;
+.bannerConnection a{
+    font-size: 20px;
+    margin-right: 20px;
+    vertical-align: center;
+    cursor: pointer;
+    color: #FFFFFF;
     font-style: italic;
-    padding-top: 10px;
-    }
-
-
-
-form{
-    margin-top: 15px;
-    margin-right: 20px;
+    text-decoration: none;
 }
 
-#buttonConnect{
-    border-radius: 30px;
-    background-color : #c3e6cb;
-    font-weight: bold;
-    vertical-align: middle;
-    font-size: 20px;
-    color: #FFFFFF;
-}
-
-label{
-    font-size: 20px;
-    margin-right: 20px;
-    color: #FFFFFF;
-}
 
 /*BANDEAU DU MILIEU */
 
@@ -114,13 +91,10 @@ label{
     width: 50%;
 }
 
-
 #middle_img{
     height:500px;
     float: right;
 }
-
-
 
 /*BANDEAU DU BAS */
 
@@ -209,6 +183,10 @@ nav .lien a{
     background-repeat: no-repeat;
 }
 
+.carrePresta a{
+    text-decoration: none;
+}
+
 
 .prestaLien{
     font-weight: bold;
@@ -220,8 +198,6 @@ nav .lien a{
 
 }
 
-p{
-    text-decoration: none;}
 
 /* --------------------- PRESTATIONS --------------------- */
 

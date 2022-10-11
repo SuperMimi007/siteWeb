@@ -1,6 +1,6 @@
 package com.mimi;
 
-import com.mimi.service.Admin;
+import com.mimi.modele.Admin;
 import com.mimi.data.AdminRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,9 +21,9 @@ public class AdminRepositoryTests {
     @Test
     public void testAddNew() {
         Admin admin = new Admin();
-        admin.setJob("dev");
         admin.setName("Emilie");
         admin.setPassword("Batman");
+        admin.setEmail("emarcellas@gmail.com");
 
         Admin savedAdmin = repo.save(admin);
 

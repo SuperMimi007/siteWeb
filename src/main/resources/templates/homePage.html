@@ -18,13 +18,11 @@
 </div>
 
 <div class="bannerConnection">
-    <div id="titre1"><h2>Education Canine</h2></div>
-        <div id="titre2"><form>
-        <label>Nom :</label>
-        <label>Password :</label>
-        <button id="buttonConnect" type="submit">Connexion</button>
-    </form>
-        </div>
+    <h2>Education Canine</h2>
+    <div id="loginLink">
+        <div> <a th:href="@{/adminLogin}"> Connexion Admin</a></div>
+        <div><a th:href="@{/clientLogin}"> Connexion Client</a></div>
+    </div>
 </div>
 
 <div class="bannerMiddle">

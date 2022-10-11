@@ -13,7 +13,7 @@
         <h1>Un amour de chien 93</h1>
     </div>
     <div class="bannerConnection">
-    <div id="bonjour"><h2 th:text="'Bonjour' + ' ' +${#strings.capitalize(titleName)} + ' ' +'!'"></h2></div>
+        <div><h2 id="bonjour"> Gestion des Admins</h2></div>
     </div>
     <section>
         <nav class="menuAdmin">
@@ -22,9 +22,16 @@
             <br/>
             <br/>
             <ul>
+                <li><a>Recherche</a> <a> OK</a></li>
+                <br/>
+                <br/>
                 <li><a th:href="@{/gestionAdmin/new}">Ajout d'un admin</a></li>
+                <br/>
                 <li><a th:href="@{/home}">Page d'accueil</a></li>
+                <br/>
                 <li><a th:href="@{/gestionClient}">Gestions des clients</a></li>
+                <br/>
+                <br/>
                 <li><a>Déconnexion</a></li>
             </ul>
         </nav>
@@ -36,7 +43,9 @@
                 <thead class="table-success">
                 <tr>
                     <th>Nom</th>
-                    <th>Job</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Mot de passe</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -44,7 +53,9 @@
                 <th:block th:each="admin : ${listAdmins}">
                     <tr>
                         <td>[[${admin.name}]]</td>
-                        <td>[[${admin.job}]]</td>
+                        <td>[[${admin.email}]]</td>
+                        <td>[[${admin.role}]]</td>
+                        <td>[[${admin.password}]]</td>
                         <td>
                             <a class="adminAction" th:href="@{'/gestionAdmin/edit/'+${admin.id}}"
                                style="color:darkslategrey;">

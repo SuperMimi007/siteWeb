@@ -1,0 +1,24 @@
+form{
+    max-width: 500px;
+    margin: 0 auto;
+    background-image: url("images/foret.jpeg");
+}
+
+.loginForm{
+    text-align: center;
+    vertical-align: center;
+    color : #222E13;
+    font-size: 50px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+td{
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+
+
+
+

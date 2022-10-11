@@ -1,4 +1,6 @@
-package com.mimi.service;
+package com.mimi.modele;
+
+import com.mimi.config.Role;
 
 import javax.persistence.*;
 
@@ -12,11 +14,23 @@ public class Admin {
     @Column(length = 20,nullable = false, unique = true)
     private String name;
 
+    @Column(length = 40, nullable = false,unique = true)
+    private String email;
+
     @Column(length = 10, nullable = false)
     private String password;
 
-    @Column(length = 10, nullable = false)
-    private String job;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public Admin (){}
+
+    public Admin(String name, String email, String password, Role role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
 
 
@@ -45,13 +59,13 @@ public class Admin {
         this.password = password;
     }
 
-    public String getJob() {
-        return job;
-    }
+    public Role getRole() {return role;}
 
-    public void setJob(String job) {
-        this.job = job;
-    }
+    public void setRole(Role role) {this.role = role;}
+
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) {this.email = email;}
 
 
     @Override
@@ -59,8 +73,9 @@ public class Admin {
         return "Admin{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", job='" + job + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
