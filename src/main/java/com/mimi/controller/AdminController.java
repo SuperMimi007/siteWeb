@@ -1,6 +1,6 @@
 package com.mimi.controller;
 import com.mimi.modele.Admin;
-import com.mimi.modele.AdminService;
+import com.mimi.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,9 +46,9 @@ public class AdminController {
         return service.fonctionDeleteAdmin(id,ra);
     }
 
-    @RequestMapping("/adminLogin")
+    @RequestMapping("/admin/login")
     public String AdminLoginPage() {
-        return "adminLogin";
+        return "/admin/adminLogin";
     }
 
 }

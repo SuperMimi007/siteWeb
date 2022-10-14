@@ -14,6 +14,11 @@
     </div>
     <div class="bannerConnection">
         <div><h2 id="bonjour"> Gestion des Admins</h2></div>
+        <div>
+            <form th:action="@{/admin/logout}" method="post">
+                <input type ="submit" value="Logout">
+            </form>
+        </div>
     </div>
     <section>
         <nav class="menuAdmin">
@@ -27,12 +32,11 @@
                 <br/>
                 <li><a th:href="@{/gestionAdmin/new}">Ajout d'un admin</a></li>
                 <br/>
-                <li><a th:href="@{/home}">Page d'accueil</a></li>
+                <li><a th:href="@{/}">Page d'accueil</a></li>
                 <br/>
                 <li><a th:href="@{/gestionClient}">Gestions des clients</a></li>
                 <br/>
                 <br/>
-                <li><a>Déconnexion</a></li>
             </ul>
         </nav>
         <article class="listeAdmin">

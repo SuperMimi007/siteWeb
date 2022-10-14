@@ -1,6 +1,6 @@
 package com.mimi.config;
 
-import com.mimi.data.LoginRepository;
+import com.mimi.repository.LoginRepository;
 import com.mimi.modele.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

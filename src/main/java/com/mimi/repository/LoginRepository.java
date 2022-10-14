@@ -1,4 +1,4 @@
-package com.mimi.data;
+package com.mimi.repository;
 
 import com.mimi.modele.Admin;
 import org.springframework.data.repository.CrudRepository;

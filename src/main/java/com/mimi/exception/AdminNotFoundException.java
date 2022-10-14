@@ -1,4 +1,4 @@
-package com.mimi.modele;
+package com.mimi.exception;
 
 public class AdminNotFoundException extends Throwable {
     public AdminNotFoundException(String message) {

@@ -7,11 +7,11 @@
 </head>
 <body>
 <div class="loginForm"><h2>Connexion Admin</h2></div>
-<form th:action="@{/adminLogin}" method="post" style="max-width: 400px; margin: 0 auto;">
+<form th:action="@{/admin/login}" method="post" style="max-width: 400px; margin: 0 auto;">
 
 
     <div th:if="${param.error}">
-        <h4 style="color: red">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</h4>
+        <h4>[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</h4>
     </div>
 
     <table>
@@ -33,7 +33,7 @@
 </form>
 <script>
 function cancel() {
-window.location = "[[@{/home}]]";
+window.location = "[[@{/homePage}]]";
 }
 </script>
 </body>

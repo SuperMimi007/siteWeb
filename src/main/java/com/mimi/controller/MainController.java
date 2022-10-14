@@ -3,38 +3,38 @@ package com.mimi.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class MainController {
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String homePage() {
-        return "homePage";
-    }
+        return "homePage";}
 
     @RequestMapping("/propos")
     public String ProposPage() {
-        return "propos";
+        return "/propos";
     }
 
-    @RequestMapping("/conseils")
+    @RequestMapping("/page/conseils")
     public String ConseilsPage() {
-        return "conseils";
+        return "page/conseils";
     }
 
-    @RequestMapping("/cours")
+    @RequestMapping("/page/cours")
     public String CoursPage() {
-        return "cours";
+        return "page/cours";
     }
 
-    @RequestMapping("/balades")
+    @RequestMapping("/page/balades")
     public String BaladesPage() {
-        return "balades";
+        return "page/balades";
     }
 
-    @RequestMapping("/coaching")
+    @RequestMapping("/page/coaching")
     public String CoachingPage() {
-        return "coaching";
+        return "page/coaching";
     }
 
 

@@ -1,6 +1,8 @@
-package com.mimi.modele;
+package com.mimi.service;
 
-import com.mimi.data.AdminRepository;
+import com.mimi.repository.AdminRepository;
+import com.mimi.exception.AdminNotFoundException;
+import com.mimi.modele.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -29,7 +31,7 @@ public class AdminService {
 
     public String fonctionNewForm(Model model) {
         model.addAttribute("admin", new Admin());
-        model.addAttribute("formTitle", "Ajout d'un nouvel admin");
+        model.addAttribute("formTitle", "action effectuée avec succès");
         return "adminForm";
     }
 

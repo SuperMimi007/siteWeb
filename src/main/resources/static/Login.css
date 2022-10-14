@@ -1,7 +1,7 @@
 form{
     max-width: 500px;
     margin: 0 auto;
-    background-image: url("images/foret.jpeg");
+    background-color: #222E13;
 }
 
 .loginForm{
@@ -14,8 +14,19 @@ form{
 }
 
 td{
-    color: #FFFFFF;
+    color: #c3e6cb;
     font-weight: bold;
+}
+
+
+h4{
+    color: darkred;
+    text-align: center;
+    font-style: italic;
+}
+
+.connect{
+    float: left;
 }
 
 

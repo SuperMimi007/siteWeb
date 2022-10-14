@@ -24,21 +24,21 @@ public class AdminSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-      //  http.authorizeRequests().antMatchers("/").permitAll();
+      http.authorizeRequests().antMatchers("/").permitAll();
 
-        http.antMatcher("/template/**")
+        http.antMatcher("/admin/**")
                 .authorizeRequests().anyRequest().hasAuthority("ADMIN")
                 .and()
                 .formLogin()
-                .loginPage("/adminLogin")
+                .loginPage("/admin/login")
                 .usernameParameter("email")
-                .loginProcessingUrl("/adminLogin")
+                .loginProcessingUrl("/admin/login")
                 .defaultSuccessUrl("/gestionAdmin")
                 .permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/adminLogout")
-                .logoutSuccessUrl("/home");
+                .logoutUrl("/admin/logout")
+                .logoutSuccessUrl("/");
 
         return http.build();
     }

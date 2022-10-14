@@ -1,7 +1,8 @@
 package com.mimi;
 
+import com.mimi.config.Role;
 import com.mimi.modele.Admin;
-import com.mimi.data.AdminRepository;
+import com.mimi.repository.AdminRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class AdminRepositoryTests {
         admin.setName("Emilie");
         admin.setPassword("Batman");
         admin.setEmail("emarcellas@gmail.com");
+        admin.setRole(Role.valueOf("ADMIN"));
 
         Admin savedAdmin = repo.save(admin);
 
@@ -55,7 +57,7 @@ public class AdminRepositoryTests {
 
     @Test
     public void testGetAdmin(){
-        Integer adminId= 8;
+        Integer adminId= 7;
         Optional<Admin> optionalAdmin= repo.findById(adminId);
         Assertions.assertThat(optionalAdmin).isPresent();
         System.out.println(optionalAdmin.get());
@@ -64,7 +66,7 @@ public class AdminRepositoryTests {
 
     @Test
     public void testDeleteAdmin(){
-        Integer adminId= 8;
+        Integer adminId= 9;
         repo.deleteById(adminId);
         Optional<Admin> optionalAdmin= repo.findById(adminId);
         Assertions.assertThat(optionalAdmin).isNotPresent();
