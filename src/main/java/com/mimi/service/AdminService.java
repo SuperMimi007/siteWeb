@@ -26,13 +26,13 @@ public class AdminService {
     public String fonctionAdminList(String titleName, Model model, ModelMap modelMap){
         modelMap.put("titleName",titleName);
         model.addAttribute("listAdmins", listAll());
-        return "gestionAdmin";
+        return "admin/gestionAdmin";
     }
 
     public String fonctionNewForm(Model model) {
         model.addAttribute("admin", new Admin());
         model.addAttribute("formTitle", "action effectuée avec succès");
-        return "adminForm";
+        return "admin/adminForm";
     }
 
     //---------------------------------------------------//
@@ -44,7 +44,7 @@ public class AdminService {
     public String fonctionSaveAdmin(Admin admin, RedirectAttributes ra) {
         save(admin);
         ra.addFlashAttribute("message", "action effectuée avec succès");
-        return "redirect:/gestionAdmin";
+        return "redirect:/admin/gestionAdmin";
     }
 
     //---------------------------------------------------//
@@ -62,10 +62,10 @@ public class AdminService {
         try {
             model.addAttribute("admin", get(id));
             model.addAttribute("message", "action effectuée avec succès");
-            return  "adminForm";
+            return  "admin/adminForm";
         } catch (AdminNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
-            return "redirect:/gestionAdmin";
+            return "redirect:/admin/gestionAdmin";
         }
     }
 
@@ -87,7 +87,7 @@ public class AdminService {
         } catch (AdminNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
-        return "redirect:/gestionAdmin";
+        return "redirect:/admin/gestionAdmin";
     }
 
     //---------------------------------------------------//

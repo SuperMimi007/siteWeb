@@ -33,7 +33,7 @@ public class AdminSecurityConfig {
                 .loginPage("/admin/login")
                 .usernameParameter("email")
                 .loginProcessingUrl("/admin/login")
-                .defaultSuccessUrl("/gestionAdmin")
+                .defaultSuccessUrl("/admin/gestionAdmin")
                 .permitAll()
                 .and()
                 .logout()

@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class ClientController {
-    @RequestMapping("/gestionClient")
+    @RequestMapping("/client/gestionClient")
     public String gestionClientPage(){
-        return"gestionClient";
+        return"client/gestionClient";
     }
 
     @RequestMapping("/client/login")

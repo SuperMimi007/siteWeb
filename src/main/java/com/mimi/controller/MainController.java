@@ -12,9 +12,9 @@ public class MainController {
     public String homePage() {
         return "homePage";}
 
-    @RequestMapping("/propos")
+    @RequestMapping("/page/propos")
     public String ProposPage() {
-        return "/propos";
+        return "/page/propos";
     }
 
     @RequestMapping("/page/conseils")

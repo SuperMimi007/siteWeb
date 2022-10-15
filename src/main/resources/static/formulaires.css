@@ -23,3 +23,11 @@ label{
     color: white;
     font-weight: bold;
 }
+
+p{
+    display:inline-block;
+}
+
+#container{
+    text-align: center;
+}
