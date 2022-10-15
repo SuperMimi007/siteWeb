@@ -31,7 +31,7 @@ public class AdminService {
 
     public String fonctionNewForm(Model model) {
         model.addAttribute("admin", new Admin());
-        model.addAttribute("formTitle", "action effectuée avec succès");
+        model.addAttribute("formTitle", "Ajout d'un nouvel admin");
         return "admin/adminForm";
     }
 

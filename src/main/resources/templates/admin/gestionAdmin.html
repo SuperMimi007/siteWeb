@@ -18,29 +18,19 @@
     </div>
     <section>
         <nav class="menuAdmin">
-            <br/>
-            <br/>
-            <div data-th-text="'Bonjour ' + ${param.name}">Bonjour vous</div>
-            <br/>
-            <br/>
+            <p>Bienvenue : <b>[[${#request.userPrincipal.principal.username}]]</b></p>
             <div>
                 <form th:action="@{/admin/logout}" method="post">
-                    <input type ="submit" value="Logout">
+                    <input id ="submit" type ="submit" value="Déconnexion">
                 </form>
                 <br/>
                 <br/>
             </div>
             <ul>
                 <li><a>Recherche</a> <a> OK</a></li>
-                <br/>
-                <br/>
                 <li><a th:href="@{/admin/gestionAdmin/new}">Ajout d'un admin</a></li>
-                <br/>
                 <li><a th:href="@{/}">Page d'accueil</a></li>
-                <br/>
-                <li><a th:href="@{/client/gestionClient}">Gestions des clients</a></li>
-                <br/>
-                <br/>
+                <li><a th:href="@{/admin/gestionClient}">Gestions des clients</a></li>
             </ul>
         </nav>
         <article class="listeAdmin">

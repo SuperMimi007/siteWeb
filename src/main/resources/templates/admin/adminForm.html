@@ -8,10 +8,10 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="adminForm"><h2>[[${formTitle}]]</h2></div>
     <form th:action="@{/admin/gestionAdmin/save}" method="post" th:object="${admin}">
+        <div class="adminForm"><h2>[[${formTitle}]]</h2></div>
         <input type="hidden" th:field="*{id}"/>
-        <div class="border border-secondary rounded p-3">
+        <div class=" border-secondary rounded p-3">
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Nom :</label>
                 <div class="col-sm-8">
@@ -42,8 +42,8 @@
             </div>
 
             <div id ="container">
-                <p><button type="submit" class="btn btn-primary m-2">Sauvegarder</button></p>
-                <p><button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Annuler</button></p>
+                <button class ="btAdForm" type="submit">Sauvegarder</button>
+                <button class ="btAdForm" type="button" onclick="cancelForm()">Annuler</button>
             </div>
         </div>
     </form>

@@ -66,6 +66,19 @@ article {
     height: 539px;
 }
 
+#submit {
+    background-color: #222E13;
+    border-radius: 20px;
+    border: none;
+    color: #c3e6cb;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
 /* --------------------- TABLEAU ADMIN --------------------- */
 
 
@@ -92,34 +105,6 @@ thead th:nth-child(3) {
 .listeAdmin{
     padding-top: 100px;
 }
-
-/* --------------------- TABLEAU CLIENT --------------------- */
-
-
-.listAdmin{
-    border-collapse: collapse;
-}
-.adminAction{
-    font-weight: bold;
-
-}
-
-.thead th:nth-child(1) {
-    width: 30%;
-}
-
-thead th:nth-child(2) {
-    width: 30%;
-}
-
-thead th:nth-child(3) {
-    width: 30%;
-}
-
-.listeAdmin{
-    padding-top: 100px;
-}
-
 
 
 

@@ -51,4 +51,8 @@ public class AdminController {
         return "admin/adminLogin";
     }
 
+
+    @RequestMapping("/admin/gestionClient")
+    public String gestionClientPage() {return "admin/gestionClient";}
+
 }

@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import javax.naming.NameNotFoundException;
+
 public class LoginUserDetailsService implements UserDetailsService {
     @Autowired private LoginRepository loginRepo;
     @Override
@@ -17,4 +19,5 @@ public class LoginUserDetailsService implements UserDetailsService {
         }
         return new LoginUserDetails(admin);
     }
+
 }

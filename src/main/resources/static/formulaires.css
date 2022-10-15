@@ -16,7 +16,8 @@
 form{
     max-width: 500px;
     margin: 0 auto;
-    background-image: url("images/foret.jpeg");
+    background-color: #222E13;
+    border-radius: 30px;
 }
 
 label{
@@ -24,10 +25,25 @@ label{
     font-weight: bold;
 }
 
-p{
-    display:inline-block;
-}
 
 #container{
     text-align: center;
 }
+
+h2{
+    color: #c3e6cb;
+}
+
+.btAdForm{
+    background-color: #c3e6cb;
+    border-radius: 30px;
+    border: none;
+    color: #222E13;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
