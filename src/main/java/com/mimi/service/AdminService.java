@@ -19,13 +19,13 @@ public class AdminService {
 
     //---------------------------------------------------//
 
-    public List<Admin> listAll(){
+    public List<Admin> listAdmins(){
         return (List<Admin>) repo.findAll();
     }
 
     public String fonctionAdminList(String titleName, Model model, ModelMap modelMap){
         modelMap.put("titleName",titleName);
-        model.addAttribute("listAdmins", listAll());
+        model.addAttribute("listAdmins", listAdmins());
         return "admin/gestionAdmin";
     }
 
@@ -43,7 +43,7 @@ public class AdminService {
 
     public String fonctionSaveAdmin(Admin admin, RedirectAttributes ra) {
         save(admin);
-        ra.addFlashAttribute("message", "action effectuée avec succès");
+        ra.addFlashAttribute("message", "action effectuée avec succès.");
         return "redirect:/admin/gestionAdmin";
     }
 
@@ -58,10 +58,11 @@ public class AdminService {
         throw new AdminNotFoundException("id introuvable"+ id);
     }
 
-    public String fonctionEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
+    public String fonctionEditAdmin(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             model.addAttribute("admin", get(id));
-            model.addAttribute("message", "action effectuée avec succès");
+            model.addAttribute("formTitle", "Modification d'un admin");
+            model.addAttribute("message", "action effectuée avec succès.");
             return  "admin/adminForm";
         } catch (AdminNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
@@ -83,7 +84,7 @@ public class AdminService {
     public String fonctionDeleteAdmin (@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             delete(id);
-            ra.addFlashAttribute("message","action effectuée avec succès");
+            ra.addFlashAttribute("message","action effectuée avec succès.");
         } catch (AdminNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }

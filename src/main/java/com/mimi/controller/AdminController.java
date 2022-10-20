@@ -1,7 +1,9 @@
 package com.mimi.controller;
+
 import com.mimi.modele.Admin;
 import com.mimi.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,12 +14,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class AdminController {
 
-    @Autowired AdminService  service;
+    @Autowired
+    AdminService service;
+
 
 
     @RequestMapping("/admin/gestionAdmin")
-    public String gestionAdminPage(){
-        return"admin/gestionAdmin";
+    public String gestionAdminPage() {
+        return "admin/gestionAdmin";
     }
 
 
@@ -28,22 +32,23 @@ public class AdminController {
 
     @GetMapping("/admin/gestionAdmin/new")
     public String newForm(Model model) {
-       return service.fonctionNewForm(model);
+
+        return service.fonctionNewForm(model);
     }
 
     @PostMapping("/admin/gestionAdmin/save")
     public String saveAdmin(Admin admin, RedirectAttributes ra) {
-        return service.fonctionSaveAdmin(admin,ra);
+        return service.fonctionSaveAdmin(admin, ra);
     }
 
     @GetMapping("/admin/gestionAdmin/edit/{id}")
-    public String EditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
-        return service.fonctionEditForm(id,model,ra);
+    public String editAdmin(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
+        return service.fonctionEditAdmin(id, model, ra);
     }
 
     @GetMapping("/admin/gestionAdmin/delete/{id}")
-    public String deleteAdmin (@PathVariable("id") Integer id, RedirectAttributes ra) {
-        return service.fonctionDeleteAdmin(id,ra);
+    public String deleteAdmin(@PathVariable("id") Integer id, RedirectAttributes ra) {
+        return service.fonctionDeleteAdmin(id, ra);
     }
 
     @RequestMapping("/admin/login")
@@ -53,6 +58,8 @@ public class AdminController {
 
 
     @RequestMapping("/admin/gestionClient")
-    public String gestionClientPage() {return "admin/gestionClient";}
+    public String gestionClientPage() {
+        return "admin/gestionClient";
+    }
 
 }

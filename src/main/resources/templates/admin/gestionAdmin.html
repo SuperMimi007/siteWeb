@@ -43,7 +43,6 @@
                     <th>Nom</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <th>Mot de passe</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -53,7 +52,6 @@
                         <td>[[${admin.name}]]</td>
                         <td>[[${admin.email}]]</td>
                         <td>[[${admin.role}]]</td>
-                        <td>[[${admin.password}]]</td>
                         <td>
                             <a class="adminAction" th:href="@{'/admin/gestionAdmin/edit/'+${admin.id}}"
                                style="color:darkslategrey;">

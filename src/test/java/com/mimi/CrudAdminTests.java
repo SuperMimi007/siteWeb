@@ -15,16 +15,17 @@ import java.util.Optional;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
-public class AdminRepositoryTests {
+public class CrudAdminTests {
     @Autowired
     private AdminRepository repo;
+
 
     @Test
     public void testAddNew() {
         Admin admin = new Admin();
-        admin.setName("Emilie");
-        admin.setPassword("Batman");
-        admin.setEmail("emarcellas@gmail.com");
+        admin.setName("Christophe");
+        admin.setPassword("Poupette");
+        admin.setEmail("tot@gmail.com");
         admin.setRole(Role.valueOf("ADMIN"));
 
         Admin savedAdmin = repo.save(admin);
@@ -34,19 +35,19 @@ public class AdminRepositoryTests {
     }
 
     @Test
-    public void testListAdmins(){
-     Iterable<Admin> admins = repo.findAll();
-     Assertions.assertThat(admins).hasSizeGreaterThan(0);
+    public void testListAdmins() {
+        Iterable<Admin> admins = repo.findAll();
+        Assertions.assertThat(admins).hasSizeGreaterThan(0);
 
-     for (Admin admin :admins){
-         System.out.println(admin);
-     }
+        for (Admin admin : admins) {
+            System.out.println(admin);
+        }
     }
 
     @Test
-    public void testUpdateAdmin(){
-        Integer adminId= 7;
-        Optional<Admin> optionalAdmin= repo.findById(adminId);
+    public void testUpdateAdmin() {
+        Integer adminId = 37;
+        Optional<Admin> optionalAdmin = repo.findById(adminId);
         Admin admin = optionalAdmin.get();
         admin.setPassword("Kiam");
         repo.save(admin);
@@ -56,19 +57,22 @@ public class AdminRepositoryTests {
     }
 
     @Test
-    public void testGetAdmin(){
-        Integer adminId= 7;
-        Optional<Admin> optionalAdmin= repo.findById(adminId);
+    public void testGetAdmin() {
+        Integer adminId = 23;
+        Optional<Admin> optionalAdmin = repo.findById(adminId);
         Assertions.assertThat(optionalAdmin).isPresent();
         System.out.println(optionalAdmin.get());
 
     }
 
     @Test
-    public void testDeleteAdmin(){
-        Integer adminId= 9;
+    public void testDeleteAdmin() {
+        Integer adminId = 37;
         repo.deleteById(adminId);
-        Optional<Admin> optionalAdmin= repo.findById(adminId);
+        Optional<Admin> optionalAdmin = repo.findById(adminId);
         Assertions.assertThat(optionalAdmin).isNotPresent();
     }
+
+
+
 }

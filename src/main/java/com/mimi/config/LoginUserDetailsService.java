@@ -10,10 +10,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import javax.naming.NameNotFoundException;
 
 public class LoginUserDetailsService implements UserDetailsService {
-    @Autowired private LoginRepository loginRepo;
+    @Autowired
+    private LoginRepository loginRepo;
+
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Admin admin = loginRepo.findByEmail(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Admin admin = loginRepo.findByEmail(email);
         if (admin == null){
             throw new UsernameNotFoundException("Aucun admin trouvé avec cet email");
         }

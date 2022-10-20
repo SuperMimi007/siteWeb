@@ -11,13 +11,13 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 20,nullable = false, unique = true)
+    @Column(nullable = false,unique = true,length = 20)
     private String name;
 
-    @Column(length = 40, nullable = false,unique = true)
+    @Column( nullable = false,unique = true,length = 40)
     private String email;
 
-    @Column(length = 10, nullable = false)
+    @Column(nullable = false,length = 64)
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -35,9 +35,7 @@ public class Admin {
 
 
 
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() {return id;}
 
     public void setId(Integer id) {
         this.id = id;
