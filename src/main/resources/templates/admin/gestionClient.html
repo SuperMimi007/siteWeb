@@ -32,7 +32,7 @@
             <br/>
             <li><a th:href="@{/page/propos}">A propos</a></li>
             <br/>
-            <li><a th:href="@{/admin/gestionAdmin}">Gestion des admin</a></li>
+            <li><a th:href="@{/admin/gestionUser}">Gestion des admins</a></li>
             <br/>
             <li><a>Déconnexion</a></li>
         </ul>
@@ -52,14 +52,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <th:block th:each="admin : ${listAdmins}">
+                <th:block th:each="user : ${listUsers}">
                     <tr>
-                        <td>[[${admin.name}]]</td>
-                        <td>[[${admin.role}]]</td>
-                        <td>[[${admin.role}]]</td>
-                        <td>[[${admin.password}]]</td>
+                        <td>[[${user.name}]]</td>
+                        <td>[[${user.role}]]</td>
+                        <td>[[${user.role}]]</td>
                         <td>
-                            <a class="adminAction" th:href="@{'/gestionAdmin/edit/'+${admin.id}}"
+                            <a class="adminAction" th:href="@{'/gestionUser/edit/'+${user.id}}"
                                style="color:darkslategrey;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-pencil" viewBox="0 0 16 16">
@@ -67,7 +66,7 @@
                                 </svg>
                             </a>
                             <br/>
-                            <a class="adminAction" th:href="@{'/gestionAdmin/delete/'+${admin.id}}"
+                            <a class="adminAction" th:href="@{'/gestionAdmin/delete/'+${user.id}}"
                                style="color:darkslategrey;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-trash" viewBox="0 0 16 16">

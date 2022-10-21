@@ -13,8 +13,7 @@
         <h1>Un amour de chien 93</h1>
     </div>
     <div class="bannerConnection">
-        <div><h2 id="bonjour"> Gestion des Admins</h2></div>
-
+        <div><h2 id="bonjour"> Gestion des utilisateurs</h2></div>
     </div>
     <section>
         <nav class="menuAdmin">
@@ -28,12 +27,12 @@
             </div>
             <ul>
                 <li><a>Recherche</a> <a> OK</a></li>
-                <li><a th:href="@{/admin/gestionAdmin/new}">Ajout d'un admin</a></li>
+                <li><a th:href="@{/admin/gestionUser/new}">Ajout d'un utilisateur</a></li>
                 <li><a th:href="@{/}">Page d'accueil</a></li>
                 <li><a th:href="@{/admin/gestionClient}">Gestions des clients</a></li>
             </ul>
         </nav>
-        <article class="listeAdmin">
+        <article class="listeUser">
             <div th:if="${message}" class="alert alert-success text-center">
                 [[${message}]];
             </div>
@@ -41,19 +40,21 @@
                 <thead class="table-success">
                 <tr>
                     <th>Nom</th>
+                    <th>Prenom</th>
                     <th>Email</th>
                     <th>Role</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <th:block th:each="admin : ${listAdmins}">
+                <th:block th:each="user : ${listUsers}">
                     <tr>
-                        <td>[[${admin.name}]]</td>
-                        <td>[[${admin.email}]]</td>
-                        <td>[[${admin.role}]]</td>
+                        <td >[[${user.name}]]</td>
+                        <td >[[${user.nickname}]]</td>
+                        <td >[[${user.email}]]</td>
+                        <td th:align="center">[[${user.role}]]</td>
                         <td>
-                            <a class="adminAction" th:href="@{'/admin/gestionAdmin/edit/'+${admin.id}}"
+                            <a class="adminAction" th:href="@{'/admin/gestionUser/edit/'+${user.id}}"
                                style="color:darkslategrey;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-pencil" viewBox="0 0 16 16">
@@ -61,7 +62,7 @@
                                 </svg>
                             </a>
                             <br/>
-                            <a class="adminAction" th:href="@{'/admin/gestionAdmin/delete/'+${admin.id}}"
+                            <a class="adminAction" th:href="@{'/admin/gestionUser/delete/'+${user.id}}"
                                style="color:darkslategrey;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-trash" viewBox="0 0 16 16">

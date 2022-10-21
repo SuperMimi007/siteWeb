@@ -1,25 +1,25 @@
 package com.mimi.config;
 
-import com.mimi.repository.LoginRepository;
-import com.mimi.modele.Admin;
+import com.mimi.repository.UserRepository;
+import com.mimi.modele.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import javax.naming.NameNotFoundException;
+
 
 public class LoginUserDetailsService implements UserDetailsService {
     @Autowired
-    private LoginRepository loginRepo;
+    private UserRepository userRepo;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Admin admin = loginRepo.findByEmail(email);
-        if (admin == null){
-            throw new UsernameNotFoundException("Aucun admin trouvé avec cet email");
+        User user= userRepo.findByEmail(email);
+        if (user == null){
+            throw new UsernameNotFoundException("Aucun user trouvé avec cet email");
         }
-        return new LoginUserDetails(admin);
+        return new LoginUserDetails(user);
     }
 
 }

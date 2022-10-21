@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Un amour de chien</title>
     <link th:href="@{/main.css}" rel="stylesheet"/>
+
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -12,27 +13,40 @@
 
 
 <div class="bannerTop">
-    <img th:src="@{images/logo.jpg}" id="logo_img"/>
+    <img th:src="@{../images/logo.jpg}" id="logo_img"/>
     <h1>Un amour de chien 93</h1>
     <a th:href="@{/page/propos}">A propos</a>
 </div>
 
 <div class="bannerConnection">
-    <h2>Education Canine</h2>
+    <div><h2 id="bonjour"> Gestion des utilisateurs</h2></div>
 </div>
 
 <div class="bannerMiddle">
     <div class="block1">
-        <p>A COMPLETER</p>
-        <br/>
-        <p>N’hésitez pas à me contacter pour toutes questions.</p>
-        <br/>
-        <img th:src="@{images/signature.png}" id="sign_img"/>
+        <ul>
+            <li><a>Recherche</a> <a> OK</a></li>
+            <br/>
+            <br/>
+            <li><a>Ajout d'un client</a></li>
+            <br/>
+            <li><a th:href="@{/}">Page d'accueil</a></li>
+            <br/>
+            <li><a th:href="@{/page/propos}">A propos</a></li>
+            <br/>
+            <li><a th:href="@{/admin/gestionUser}">Gestion des admins</a></li>
+            <br/>
+            <li><a>Déconnexion</a></li>
+        </ul>
     </div>
     <div class="block2">
-        <img th:src="@{images/chienAssis.jpeg}" id="middle_img"/>
+        <br/>
+        INFOS CLIENTS A COMPLETER
+        <br/>
     </div>
 </div>
+
+
 
 <div class="bannerFooter">
     <div class="contact">
