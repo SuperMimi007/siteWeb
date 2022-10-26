@@ -19,31 +19,21 @@
 </div>
 
 <div class="bannerConnection">
-    <div><h2 id="bonjour"> Gestion des utilisateurs</h2></div>
+    <h2 id="bonjour"> <p>Bonjour <b>[[${#request.userPrincipal.principal.fullName}]]</b>!</p></h2>
 </div>
 
 <div class="bannerMiddle">
-    <div class="block1">
-        <ul>
-            <li><a>Recherche</a> <a> OK</a></li>
-            <br/>
-            <br/>
-            <li><a>Ajout d'un client</a></li>
-            <br/>
-            <li><a th:href="@{/}">Page d'accueil</a></li>
-            <br/>
-            <li><a th:href="@{/page/propos}">A propos</a></li>
-            <br/>
-            <li><a th:href="@{/admin/gestionUser}">Gestion des admins</a></li>
-            <br/>
-            <li><a>Déconnexion</a></li>
-        </ul>
-    </div>
-    <div class="block2">
+
+        <br/>
         <br/>
         INFOS CLIENTS A COMPLETER
         <br/>
-    </div>
+        <br/>
+
+    <form th:action="@{/admin/logout}" method="post">
+        <input id ="submit" type ="submit" value="Déconnexion">
+    </form>
+
 </div>
 
 

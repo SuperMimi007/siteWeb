@@ -54,4 +54,8 @@ public class LoginUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public String getFullName(){
+        return user.getNickname()+" "+user.getName();
+    }
 }

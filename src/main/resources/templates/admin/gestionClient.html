@@ -18,23 +18,21 @@
 </div>
 <section>
     <nav class="menuAdmin">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <p>Bienvenue : <b>[[${#request.userPrincipal.principal.username}]]</b></p>
+        <div>
+            <form th:action="@{/admin/logout}" method="post">
+                <input id ="submit" type ="submit" value="Déconnexion">
+            </form>
+            <br/>
+            <br/>
+        </div>
         <ul>
             <li><a>Recherche</a> <a> OK</a></li>
             <br/>
             <br/>
-            <li><a>Ajout d'un client</a></li>
+            <li><a th:href="@{/admin/gestionClient/new}">Ajout d'un compagnon</a></li>
             <br/>
-            <li><a th:href="@{/}">Page d'accueil</a></li>
-            <br/>
-            <li><a th:href="@{/page/propos}">A propos</a></li>
-            <br/>
-            <li><a th:href="@{/admin/gestionUser}">Gestion des admins</a></li>
-            <br/>
-            <li><a>Déconnexion</a></li>
+            <li><a th:href="@{/admin/gestionUser}">Gestion des utilisateurs</a></li>
         </ul>
     </nav>
     <article>
@@ -52,13 +50,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <th:block th:each="user : ${listUsers}">
+                <th:block th:each="user : ${listDogs}">
                     <tr>
-                        <td>[[${user.name}]]</td>
-                        <td>[[${user.role}]]</td>
-                        <td>[[${user.role}]]</td>
+                        <td >[[${user.nickname}]] [[${user.name}]]</td>
+                        <td>[[${user.phone}]]</td>
+                        <td>[[${dog.name}]]</td>
+                        <td>[[${dog.dateOfBirth}]]</td>
+                        <td>[[${dog.breed}]]</td>
+                        <td>[[${dog.sexe}]]</td>
+                        <td>[[${dog.sterilization}]]</td>
                         <td>
-                            <a class="adminAction" th:href="@{'/gestionUser/edit/'+${user.id}}"
+                            <a class="adminAction" th:href="@{'/gestionClient/edit/'+${dog.id}}"
                                style="color:darkslategrey;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-pencil" viewBox="0 0 16 16">
@@ -66,7 +68,7 @@
                                 </svg>
                             </a>
                             <br/>
-                            <a class="adminAction" th:href="@{'/gestionAdmin/delete/'+${user.id}}"
+                            <a class="adminAction" th:href="@{'/gestionClient/delete/'+${dog.id}}"
                                style="color:darkslategrey;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-trash" viewBox="0 0 16 16">

@@ -2,7 +2,7 @@ package com.mimi;
 
 import com.mimi.config.Role;
 import com.mimi.modele.User;
-import com.mimi.repository.AdminRepository;
+import com.mimi.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @Rollback(false)
 public class CrudUserTests {
     @Autowired
-    private AdminRepository repo;
+    private UserRepository repo;
 
 
     @Test

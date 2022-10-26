@@ -11,8 +11,4 @@ public class ClientController {
         return"client/pageClient";
     }
 
-    @RequestMapping("/client/login")
-    public String ClientLoginPage() {
-        return "client/clientLogin";
-    }
 }

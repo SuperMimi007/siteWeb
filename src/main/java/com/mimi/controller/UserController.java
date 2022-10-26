@@ -3,7 +3,6 @@ package com.mimi.controller;
 import com.mimi.modele.User;
 import com.mimi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,17 +11,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
-
-    @Autowired
-    UserService service;
-
-
+    @Autowired UserService service;
 
     @RequestMapping("/admin/gestionUser")
     public String gestionUserPage() {
         return "admin/gestionUser";
     }
-
 
     @GetMapping("/admin/gestionUser")
     public String userList(@RequestParam(defaultValue = "User") String titleName, Model model, ModelMap modelMap) {
@@ -30,8 +24,8 @@ public class UserController {
     }
 
     @GetMapping("/admin/gestionUser/new")
-    public String newForm(Model model) {
-        return service.fonctionNewForm(model);
+    public String userForm(Model model) {
+        return service.fonctionUserForm(model);
     }
 
     @PostMapping("/admin/gestionUser/save")
@@ -54,10 +48,8 @@ public class UserController {
         return "admin/adminLogin";
     }
 
-
-    @RequestMapping("/admin/gestionClient")
-    public String gestionClientPage() {
-        return "admin/gestionClient";
+    @RequestMapping("/client/login")
+    public String ClientLoginPage() {
+        return "client/clientLogin";
     }
-
 }

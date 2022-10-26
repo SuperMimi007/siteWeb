@@ -3,9 +3,9 @@
 /* --------------------- FORMULAIRE NOUVEL ADMIN --------------------- */
 
 
-.adminForm{
+.userForm{
     text-align: center;
-    vertical-align: center;
+    padding-top: 10px;
     color : #222E13;
     font-size: 50px;
     font-weight: bold;

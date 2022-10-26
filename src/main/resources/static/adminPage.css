@@ -28,13 +28,11 @@
 }
 
 #bonjour{
-    padding-left: 650px;
     min-width:125px;
     position: fixed;
     color : #FFFFFF;
     font-size: 35px;
     font-style: italic;
-    margin-left: 110px;
     padding-top: 10px;
 }
 

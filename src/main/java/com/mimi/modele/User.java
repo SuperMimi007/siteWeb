@@ -1,7 +1,6 @@
 package com.mimi.modele;
 
 import com.mimi.config.Role;
-
 import javax.persistence.*;
 
 @Entity
@@ -24,17 +23,31 @@ public class User {
     @Column(nullable = false, length = 64)
     private String password;
 
+    @Column(nullable = false,length = 50)
+    private String address;
+
+    @Column(nullable = false,length = 20)
+    private String phone;
+
+    @Column(nullable = false,length = 20)
+    private String contact;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
+
+
     public User() {}
 
-    public User(Integer id, String email, String name, String nickname, String password, Role role) {
+    public User(Integer id, String email, String name, String nickname, String password, String adress, String phone, String contact, Role role) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.nickname = nickname;
         this.password = password;
+        this.address = adress;
+        this.phone = phone;
+        this.contact = contact;
         this.role = role;
     }
 
@@ -78,6 +91,30 @@ public class User {
         this.password = password;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String adress) {
+        this.address = adress;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
     public Role getRole() {
         return role;
     }
@@ -87,16 +124,20 @@ public class User {
     }
 
 
-
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", nickName='" + nickname + '\'' +
                 ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
+                ", adress='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", contact='" + contact + '\'' +
                 ", role=" + role +
                 '}';
+
+
     }
 }
