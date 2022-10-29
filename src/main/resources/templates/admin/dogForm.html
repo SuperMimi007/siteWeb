@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>[[${formTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link th:href="@{/dogForm.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:align="center">
+    <h2 class="userForm">[[${formTitle}]]</h2>
+    <br>
+    <form th:action="@{/client/gestionClient/save}" method="post" th:object="${dog}">
+        <table>
+            <tr>
+                <td><input type="hidden" th:field="*{dogId}"/></td>
+            </tr>
+            <tr>
+                <td><input type="hidden" th:field="*{user.id}"/></td>
+            </tr>
+            <tr>
+                <td>Compagnon:</td>
+                <td><input type="text" th:field="*{dogName}" class="form-control" required minlength="3" maxlength="20"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Naissance :</td>
+                <td><input type="date" th:field="*{dateOfBirth}" class="form-control" required/></td>
+            </tr>
+            <tr>
+                <td>Race :</td>
+                <td><input type="text" th:field="*{breed}" class="form-control" required minlength="4" maxlength="40"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Sexe :</td>
+                <td><select style="border-radius: 5px" th:field="*{sexe}">
+                    <option th:value="M" th:text="male"></option>
+                    <option th:value="F" th:text="Femelle"></option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Stérilisation :</td>
+                <td><select style="border-radius: 5px" th:field="*{sterilization}">
+                    <option th:value="O" th:text="Oui"></option>
+                    <option th:value="N" th:text="Non"></option>
+                </select>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <div id="container">
+            <button class="btAdForm" type="submit">Sauvegarder</button>
+            <button class="btAdForm" type="button" onclick="cancelForm()">Annuler</button>
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/admin/gestionClient}]]";
+    }
+</script>
+
+</body>
+</html>

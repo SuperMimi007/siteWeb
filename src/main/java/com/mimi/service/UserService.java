@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -28,11 +29,14 @@ public class UserService {
         return "admin/gestionUser";
     }
 
+
     public String fonctionUserForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("formTitle", "Ajout d'un nouvel user");
         return "admin/userForm";
     }
+
+
 
     //---------------------------------------------------//
 
@@ -46,7 +50,7 @@ public class UserService {
         return "redirect:/admin/gestionUser";
     }
 
-    //---------------------------------------------------//
+        //---------------------------------------------------//
 
     public User get(Integer  id) throws UserNotFoundException {
         Optional<User> result =repo.findById(id);
@@ -91,7 +95,6 @@ public class UserService {
     }
 
     //---------------------------------------------------//
-
 
 
 }

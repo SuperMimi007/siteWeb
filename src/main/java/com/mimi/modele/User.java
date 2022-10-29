@@ -4,7 +4,6 @@ import com.mimi.config.Role;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
 public class User {
 
     @Id
@@ -18,7 +17,7 @@ public class User {
     private String name;
 
     @Column(nullable = false,length = 20)
-    private String nickname;
+    private String firstName;
 
     @Column(nullable = false, length = 64)
     private String password;
@@ -36,16 +35,15 @@ public class User {
     private Role role;
 
 
-
     public User() {}
 
-    public User(Integer id, String email, String name, String nickname, String password, String adress, String phone, String contact, Role role) {
+    public User(Integer id, String email, String name, String firstName, String password, String address, String phone, String contact, Role role) {
         this.id = id;
         this.email = email;
         this.name = name;
-        this.nickname = nickname;
+        this.firstName = firstName;
         this.password = password;
-        this.address = adress;
+        this.address = address;
         this.phone = phone;
         this.contact = contact;
         this.role = role;
@@ -67,12 +65,12 @@ public class User {
         this.name = name;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getEmail() {
@@ -95,8 +93,8 @@ public class User {
         return address;
     }
 
-    public void setAddress(String adress) {
-        this.address = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhone() {
@@ -124,13 +122,14 @@ public class User {
     }
 
 
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
-                ", nickname='" + nickname + '\'' +
+                ", nickname='" + firstName + '\'' +
                 ", password='" + password + '\'' +
                 ", adress='" + address + '\'' +
                 ", phone='" + phone + '\'' +

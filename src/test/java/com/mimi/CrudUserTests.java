@@ -24,7 +24,7 @@ public class CrudUserTests {
     public void testAddNew() {
         User user = new User();
         user.setName("Pre");
-        user.setNickname("Christophe");
+        user.setFirstName("Christophe");
         user.setEmail("Christo@gmail.com");
         user.setPassword("Christo");
         user.setRole(Role.valueOf("USER"));

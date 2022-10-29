@@ -1,9 +1,7 @@
 package com.mimi.service;
 
-
 import com.mimi.exception.UserNotFoundException;
 import com.mimi.modele.Dog;
-import com.mimi.modele.User;
 import com.mimi.repository.DogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +15,11 @@ import java.util.Optional;
 
 @Service
 public class DogService {
-    @Autowired private DogRepository repo;
+ @Autowired private DogRepository repo;
 
     //---------------------------------------------------//
 
-    public List<Dog> listDogs(){
-        return (List<Dog>) repo.findAll();
+    public List<Dog> listDogs(){return (List<Dog>) repo.findAll();
     }
 
     public String fonctionDogList(String titleName, Model model, ModelMap modelMap){
@@ -31,11 +28,14 @@ public class DogService {
         return "admin/gestionClient";
     }
 
+
     public String fonctionDogForm(Model model) {
         model.addAttribute("dog", new Dog());
         model.addAttribute("formTitle", "Ajout d'un nouveau compagnon");
         return "admin/dogForm";
     }
+
+
 
     //---------------------------------------------------//
 
@@ -51,18 +51,18 @@ public class DogService {
 
     //---------------------------------------------------//
 
-    public Dog get(Integer  id) throws UserNotFoundException {
-        Optional<Dog> result =repo.findById(id);
+    public Dog get(Integer  dogId) throws UserNotFoundException {
+        Optional<Dog> result =repo.findById(dogId);
 
         if (result.isPresent()){
             return  result.get();
         }
-        throw new UserNotFoundException("id introuvable"+ id);
+        throw new UserNotFoundException("id introuvable"+ dogId);
     }
 
-    public String fonctionEditDog(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
+    public String fonctionEditDog(@PathVariable("id") Integer dogId, Model model, RedirectAttributes ra) {
         try {
-            model.addAttribute("dog", get(id));
+            model.addAttribute("dog", get(dogId));
             model.addAttribute("formTitle", "Modification d'un compagnon");
             model.addAttribute("message", "action effectuée avec succès.");
             return  "admin/dogForm";
@@ -75,17 +75,17 @@ public class DogService {
     //---------------------------------------------------//
 
 
-    public void delete(Integer id) throws UserNotFoundException {
-        Integer count = repo.countById(id);
+    public void delete(Integer dogId) throws UserNotFoundException {
+        Integer count = repo.countByDogId(dogId);
         if (count == null || count == 0) {
-            throw new UserNotFoundException("id introuvable" + id);
+            throw new UserNotFoundException("id introuvable" + dogId);
         }
-        repo.deleteById(id);
+        repo.deleteById(dogId);
     }
 
-    public String fonctionDeleteDog (@PathVariable("id") Integer id, RedirectAttributes ra) {
+    public String fonctionDeleteDog (@PathVariable("dogId") Integer dogId, RedirectAttributes ra) {
         try {
-            delete(id);
+            delete(dogId);
             ra.addFlashAttribute("message","action effectuée avec succès.");
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());

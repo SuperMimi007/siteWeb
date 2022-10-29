@@ -9,9 +9,23 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class UserController {
     @Autowired UserService service;
+
+    @RequestMapping("/admin/login")
+    public String UserLoginPage() {
+        return "admin/adminLogin";
+    }
+
+    @RequestMapping("/client/login")
+    public String ClientLoginPage() {
+        return "client/clientLogin";
+    }
+
 
     @RequestMapping("/admin/gestionUser")
     public String gestionUserPage() {
@@ -25,6 +39,7 @@ public class UserController {
 
     @GetMapping("/admin/gestionUser/new")
     public String userForm(Model model) {
+        System.out.println("formulaireUser");
         return service.fonctionUserForm(model);
     }
 
@@ -43,13 +58,5 @@ public class UserController {
         return service.fonctionDeleteUser(id, ra);
     }
 
-    @RequestMapping("/admin/login")
-    public String UserLoginPage() {
-        return "admin/adminLogin";
-    }
 
-    @RequestMapping("/client/login")
-    public String ClientLoginPage() {
-        return "client/clientLogin";
-    }
 }
