@@ -17,6 +17,7 @@ import java.util.Optional;
 public class DogService {
  @Autowired private DogRepository repo;
 
+
     //---------------------------------------------------//
 
     public List<Dog> listDogs(){return (List<Dog>) repo.findAll();
@@ -25,28 +26,22 @@ public class DogService {
     public String fonctionDogList(String titleName, Model model, ModelMap modelMap){
         modelMap.put("titleName",titleName);
         model.addAttribute("listDogs", listDogs());
-        return "admin/gestionClient";
+        return "admin/gestionDog";
     }
 
 
-    public String fonctionDogForm(Model model) {
-        model.addAttribute("dog", new Dog());
-        model.addAttribute("formTitle", "Ajout d'un nouveau compagnon");
-        return "admin/dogForm";
-    }
-
-
-
-    //---------------------------------------------------//
+    //----------- SAUVEGARDE CHIEN-----------//
 
     public void save(Dog dog) {
         repo.save(dog);
     }
 
     public String fonctionSaveDog(Dog dog, RedirectAttributes ra) {
+        System.out.println("entrée sauvegarde  OK");
         save(dog);
         ra.addFlashAttribute("message", "action effectuée avec succès.");
-        return "redirect:/admin/gestionClient";
+        System.out.println("sortie sauvegarde");
+        return "redirect:/admin/gestionDog";
     }
 
     //---------------------------------------------------//
@@ -68,7 +63,7 @@ public class DogService {
             return  "admin/dogForm";
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
-            return "redirect:/admin/gestionClient";
+            return "redirect:/admin/gestionDog";
         }
     }
 
@@ -90,7 +85,7 @@ public class DogService {
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
-        return "redirect:/admin/gestionClient";
+        return "redirect:/admin/gestionDog";
     }
 
     //---------------------------------------------------//

@@ -1,12 +1,17 @@
 package com.mimi.service;
 
+
+import com.mimi.modele.Dog;
 import com.mimi.modele.User;
+import com.mimi.repository.DogRepository;
 import com.mimi.repository.UserRepository;
 import com.mimi.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -17,11 +22,20 @@ import java.util.Optional;
 public class UserService {
     @Autowired private UserRepository repo;
 
-    //---------------------------------------------------//
+
+    //----------- LISTE USERS + RECHERCHE -----------//
 
     public List<User> listUsers(){
         return (List<User>) repo.findAll();
     }
+
+    public List<User> listRecherche(String keyword) {
+        if (keyword != null){
+            return repo.findAll(keyword);
+    }
+        return repo.findAll();
+    }
+
 
     public String fonctionUserList(String titleName, Model model, ModelMap modelMap){
         modelMap.put("titleName",titleName);
@@ -30,6 +44,9 @@ public class UserService {
     }
 
 
+
+
+    //----------- FORMULAIRE USER-----------//
     public String fonctionUserForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("formTitle", "Ajout d'un nouvel user");
@@ -38,7 +55,7 @@ public class UserService {
 
 
 
-    //---------------------------------------------------//
+    //----------- SAUVEGARDE-----------//
 
     public void save(User user) {
         repo.save(user);
@@ -50,7 +67,7 @@ public class UserService {
         return "redirect:/admin/gestionUser";
     }
 
-        //---------------------------------------------------//
+    //----------- UPDATE-----------//
 
     public User get(Integer  id) throws UserNotFoundException {
         Optional<User> result =repo.findById(id);
@@ -73,7 +90,7 @@ public class UserService {
         }
     }
 
-    //---------------------------------------------------//
+    //----------- DELETE-----------//
 
 
     public void delete(Integer id) throws UserNotFoundException {
@@ -94,7 +111,22 @@ public class UserService {
         return "redirect:/admin/gestionUser";
     }
 
-    //---------------------------------------------------//
+
+    //----------- AJOUT CHIEN-----------//
+
+
+    public String fonctionDogForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
+        try{
+            System.out.println("entrée formulaire OK ");
+            model.addAttribute("user", get(id));
+            model.addAttribute("dog", new Dog());
+            model.addAttribute("formTitle", "Ajout d'un nouveau compagnon");
+            System.out.println("sortie formulaire  OK ");
+        } catch (UserNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+        }
+        return "admin/dogForm";
+    }
 
 
 }

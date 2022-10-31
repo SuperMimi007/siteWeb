@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestion des Clients</title>
-    <link th:href="@{/GestionClient.css}" rel="stylesheet"/>
+    <link th:href="@{/gestionDog.css}" rel="stylesheet"/>
     <link th:href="@{/main.css}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
 <div class="bannerAdmin">
-    <img th:src="@{../images/logo.jpg}" id="logo_img"/>
+    <img th:src="@{../images/logo.jpg}" alt="logo" id="logo_img"/>
     <h1>Un amour de chien 93</h1>
 </div>
 <div class="bannerConnection">
@@ -20,9 +20,20 @@
         <p>Bonjour [[${#request.userPrincipal.principal.fullName}]] !</p>
         <div>
             <ul>
-                <li><a>Recherche</a> <a> OK</a></li>
+                <li>
+                    <form class ="recherche" th :action="@{/}" >
+                        Filtre :
+                        <input type="text" name="Mot-clé" required/>
+                        &nbsp
+                        <input type="submit" value="Rechercher"/>
+                        &nbsp
+                        <input type="submit" value="Effacer"/>
+                    </form>
+                </li>
+                <div>&nbsp</div>
                 <li><a th:href="@{/admin/gestionUser}">Gestion des utilisateurs</a></li>
             </ul>
+            <div>&nbsp</div>
             <form th:action="@{/admin/logout}" method="post">
                 <input id ="submit" type ="submit" value="Déconnexion">
             </form>
@@ -52,7 +63,7 @@
             <th:block th:each="dog : ${listDogs}">
                 <tr>
                     <td>[[${dog.dogName}]]</td>
-                    <td>[[${dog.user.name}]]</td>
+                    <td>[[${dog.user.firstName+" "+dog.user.name}]]</td>
                     <td>[[${dog.user.phone}]]</td>
                     <td>[[${dog.user.email}]]</td>
                     <td>[[${dog.dateOfBirth}]]</td>
@@ -60,7 +71,7 @@
                     <td>[[${dog.sexe}]]</td>
                     <td>[[${dog.sterilization}]]</td>
                     <td>
-                        <a class="adminAction" th:href="@{'/admin/gestionClient/edit/'+${dog.dogId}}"
+                        <a class="adminAction" th:href="@{'/admin/gestionDog/edit/'+${dogId}}"
                            style="color:darkslategrey;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-pencil" viewBox="0 0 16 16">
@@ -68,7 +79,7 @@
                             </svg>
                         </a>
                         <br/>
-                        <a class="adminAction" th:href="@{'/admin/gestionClient/delete/'+${dog.dogId}}"
+                        <a class="adminAction" th:href="@{'/admin/gestionDog/delete/'+${dogId}}"
                            style="color:darkslategrey;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-trash" viewBox="0 0 16 16">
@@ -82,7 +93,6 @@
             </th:block>
             </tbody>
         </table>
-    </article>
     </article>
 </section>
 </body>

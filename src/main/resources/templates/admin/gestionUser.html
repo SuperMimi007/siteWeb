@@ -20,9 +20,20 @@
         <p>Bonjour [[${#request.userPrincipal.principal.fullName}]] !</p>
         <div>
             <ul>
+                <li>
+                    <form class ="recherche" th :action="@{/admin/gestionUser}" >
+                        Filtre :
+                        <input type="text" name="Mot-clé" required/>
+                        &nbsp
+                        <input type="submit" value="Rechercher"/>
+                        &nbsp
+                        <input type="submit" value="Effacer"/>
+                    </form>
+                </li>
+                <div>&nbsp</div>
                 <li><a th:href="@{/admin/gestionUser/new}">Ajout d'un utilisateur</a></li>
-                <li><a>Recherche</a> <a> OK</a></li>
-                <li><a th:href="@{/admin/gestionClient}">Gestion des clients</a></li>
+                <div>&nbsp</div>
+                <li><a th:href="@{/admin/gestionDog}">Gestion des compagnons</a></li>
             </ul>
             <form th:action="@{/admin/logout}" method="post">
                 <input id="submit" type="submit" value="Déconnexion">
@@ -71,7 +82,7 @@
                     </a>
                 </td>
                 <td>
-                    <a class="adminAction" th:href="@{/admin/gestionClient/new/}"
+                    <a class="adminAction" th:href="@{'/admin/gestionUser/newDog/'+${user.id}}"
                        style="color:darkslategrey;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                              class="bi bi-plus-square" viewBox="0 0 16 16">

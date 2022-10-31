@@ -95,7 +95,6 @@ public class Dog {
     }
 
 
-
     public String getSterilization() {
         return sterilization;
     }

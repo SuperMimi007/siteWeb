@@ -1,12 +1,13 @@
 package com.mimi.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class ClientController {
 
-    @RequestMapping("/client/pageClient")
+    @GetMapping("/client/pageClient")
     public String gestionClientPage(){
         return"client/pageClient";
     }

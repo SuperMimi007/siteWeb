@@ -78,6 +78,10 @@ article {
     cursor: pointer;
 }
 
+.recherche{
+    font-weight: bold;
+}
+
 /* --------------------- TABLEAU --------------------- */
 
 .clientTable{
