@@ -8,6 +8,7 @@ import com.mimi.repository.UserRepository;
 import com.mimi.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -29,20 +30,20 @@ public class UserService {
         return (List<User>) repo.findAll();
     }
 
-    public List<User> listRecherche(String keyword) {
-        if (keyword != null){
-            return repo.findAll(keyword);
-    }
-        return repo.findAll();
-    }
-
-
     public String fonctionUserList(String titleName, Model model, ModelMap modelMap){
         modelMap.put("titleName",titleName);
         model.addAttribute("listUsers", listUsers());
         return "admin/gestionUser";
     }
 
+
+    //----------- RECHERCHE-----------//
+    public List<User> listRecherche(String keyword) {
+        if (keyword != null){
+            return repo.findAll(keyword);
+        }
+        return repo.findAll();
+    }
 
 
 
@@ -66,6 +67,12 @@ public class UserService {
         ra.addFlashAttribute("message", "action effectuée avec succès.");
         return "redirect:/admin/gestionUser";
     }
+
+ /*   private void  encodePassword(User user){
+        BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
+        String encodedPassword =passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+    }*/
 
     //----------- UPDATE-----------//
 
@@ -101,7 +108,7 @@ public class UserService {
         repo.deleteById(id);
     }
 
-  public String fonctionDeleteUser (@PathVariable("id") Integer id, RedirectAttributes ra) {
+    public String fonctionDeleteUser (@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             delete(id);
             ra.addFlashAttribute("message","action effectuée avec succès.");

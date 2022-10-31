@@ -10,7 +10,8 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     User findByEmail(String email);
-    Integer countById(Integer  id);
+    Integer countById(Integer id);
+    User findByName(String name);
 
     @Query("SELECT u FROM User u WHERE "
             + "CONCAT(u.id,u.name,u.firstName)"

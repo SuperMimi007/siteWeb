@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Service
 public class DogService {
- @Autowired private DogRepository repo;
+    @Autowired private DogRepository repo;
 
 
     //---------------------------------------------------//

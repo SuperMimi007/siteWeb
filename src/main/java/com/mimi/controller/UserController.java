@@ -54,7 +54,7 @@ public class UserController {
 
     //----------- ENDPOINT DELETE USER -----------//
 
-   @GetMapping("/admin/gestionUser/delete/{id}")
+    @GetMapping("/admin/gestionUser/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         return service.fonctionDeleteUser(id, ra);
     }

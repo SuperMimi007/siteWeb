@@ -29,6 +29,9 @@ public class Dog {
     @JoinColumn(name = "id")
     private User user;
 
+    @Transient
+    private int id;
+
 
     public Dog(Integer dogId, String dogName, Date dateOfBirth, String breed, String sexe, String sterilization, User user) {
         this.dogId = dogId;
