@@ -46,7 +46,7 @@ public class AdminSecurityConfig {
                 .and()
                 .logout()
                 .logoutUrl("/admin/logout")
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/AmourChien93");
 
         return http.build();
     }

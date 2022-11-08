@@ -1,5 +1,7 @@
 package com.mimi.modele;
 
+import com.mimi.modele.User;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -26,11 +28,8 @@ public class Dog {
     private String sterilization;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private User user;
-
-    @Transient
-    private int id;
 
 
     public Dog(Integer dogId, String dogName, Date dateOfBirth, String breed, String sexe, String sterilization, User user) {
@@ -127,4 +126,3 @@ public class Dog {
                 '}';
     }
 }
-

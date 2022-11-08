@@ -56,6 +56,6 @@ public class LoginUserDetails implements UserDetails {
     }
 
     public String getFullName(){
-        return user.getFirstName()+" "+user.getName();
+        return user.getUserFirstName()+" "+user.getUserLastName();
     }
 }

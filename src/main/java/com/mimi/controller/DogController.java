@@ -1,6 +1,5 @@
 package com.mimi.controller;
 
-import com.mimi.exception.UserNotFoundException;
 import com.mimi.modele.Dog;
 import com.mimi.service.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,31 +12,41 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class DogController {
-    @Autowired DogService service;
+    @Autowired DogService Dogservice;
+
 
     //----------- ENDPOINT CHIEN  LIST + PAGE GESTION CHIEN -----------//
 
     @GetMapping("/admin/gestionDog")
     public String dogList(@RequestParam(defaultValue = "Dog") String titleName, Model model, ModelMap modelMap) {
-        return service.fonctionDogList(titleName, model, modelMap);
+        return Dogservice.fonctionDogList(titleName, model, modelMap);
     }
 
+    //----------- ENDPOINT FORMULAIRE CHIEN -----------//
+    @GetMapping("/admin/gestionDog/new")
+    public String dogForm(Model model) {
+        return Dogservice.fonctionDogForm(model);
+    }
 
+    //----------- ENDPOINT SAUVEGARDE CHIEN -----------//
 
     @PostMapping("/admin/gestionDog/save")
     public String saveDog(Dog dog, RedirectAttributes ra) {
-        System.out.println("sauvegardeChien");
-        return service.fonctionSaveDog(dog, ra);
+        return Dogservice.fonctionSaveDog(dog, ra);
     }
 
-    @GetMapping("/admin/gestionDog/edit/{id}")
-    public String editDog(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
-        return service.fonctionEditDog(id, model, ra);
+    //----------- ENDPOINT UPDATE CHIEN -----------//
+
+    @GetMapping("/admin/gestionDog/edit/{dogId}")
+    public String editDog(@PathVariable("dogId") Integer dogId, Model model, RedirectAttributes ra) {
+        return Dogservice.fonctionEditDog(dogId, model, ra);
     }
 
-    @GetMapping("/admin/gestionDog/delete/{id}")
-    public String deleteDog(@PathVariable("id") Integer id, RedirectAttributes ra) {
-        return service.fonctionDeleteDog(id, ra);
+    //----------- ENDPOINT DELETE CHIEN -----------//
+
+    @GetMapping("/admin/gestionDog/delete/{dogId}")
+    public String deleteDog(@PathVariable("dogId") Integer dogId, RedirectAttributes ra) {
+        return Dogservice.fonctionDeleteDog(dogId, ra);
     }
 
 }

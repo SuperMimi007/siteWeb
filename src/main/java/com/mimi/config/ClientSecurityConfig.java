@@ -27,7 +27,7 @@ public class ClientSecurityConfig {
                 .and()
                 .logout()
                 .logoutUrl("/client/logout")
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/AmourChien93");
 
         return http.build();
     }

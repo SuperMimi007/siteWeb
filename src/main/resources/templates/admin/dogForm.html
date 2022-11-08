@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>[[${formTitle}]]</title>
@@ -8,62 +7,72 @@
     <link th:href="@{/dogForm.css}" rel="stylesheet"/>
 </head>
 <body>
-<div th:align="center">
-    <h2 class="userForm">[[${formTitle}]]</h2>
-    <br>
+<div class="container-fluid">
     <form th:action="@{/admin/gestionDog/save}" method="post" th:object="${dog}">
-        <table>
-            <tr>
-                <td><input type="hidden" th:field="*{dogId}"/></td>
-            </tr>
-            <tr>
-                <td><input type="hidden" th:field="*{user.id}"/></td>
-            </tr>
-            <tr>
-                <td>Compagnon:</td>
-                <td><input type="text" th:field="*{dogName}" class="form-control" required minlength="3" maxlength="20"/>
-                </td>
-            </tr>
-            <tr>
-                <td>Naissance :</td>
-                <td><input type="date" th:field="*{dateOfBirth}" class="form-control" required/></td>
-            </tr>
-            <tr>
-                <td>Race :</td>
-                <td><input type="text" th:field="*{breed}" class="form-control" required minlength="4" maxlength="40"/>
-                </td>
-            </tr>
-            <tr>
-                <td>Sexe :</td>
-                <td><select style="border-radius: 5px" th:field="*{sexe}">
-                    <option th:value="M" th:text="male"></option>
-                    <option th:value="F" th:text="Femelle"></option>
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Stérilisation :</td>
-                <td><select style="border-radius: 5px" th:field="*{sterilization}">
-                    <option th:value="O" th:text="Oui"></option>
-                    <option th:value="N" th:text="Non"></option>
-                </select>
-                </td>
-            </tr>
-        </table>
-        <br/>
-        <div id="container">
-            <button class="btAdForm" type="submit">Sauvegarder</button>
-            <button class="btAdForm" type="button" onclick="cancelForm()">Annuler</button>
+        <div class="userForm"><h2>[[${formTitle}]]</h2></div>
+
+        <div class=" border-secondary rounded p-5">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Compagnon:</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{dogName}" class="form-control" required minlength="3"
+                           maxlength="20"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Naissance :</label>
+                <div class="col-sm-8">
+                    <input type="date" th:field="*{dateOfBirth}" class="form-control" required minlength="3"
+                           maxlength="20"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Race :</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{breed}" class="form-control" required minlength="5"
+                           maxlength="40"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Sexe :</label>
+                <div class="col-sm-8">
+                    <select style="border-radius: 5px" th:field="*{sexe}">
+                        <option th:value="male" th:text="male"></option>
+                        <option th:value="Femelle" th:text="Femelle"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Stérilization :</label>
+                <div class="col-sm-8">
+                    <select style="border-radius: 5px" th:field="*{sterilization}">
+                        <option th:value="oui" th:text="oui"></option>
+                        <option th:value="non" th:text="non"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Maitre :</label>
+                <div class="col-sm-8">
+                    <select  style="border-radius: 5px" th:field="*{user}">
+                           <option  th:each="Uname : ${usersName}"
+                                    th:value="${Uname.userId}"
+                                    th:text="${Uname.userFirstName} + ' ' + ${Uname.userLastName}">
+                            </option>
+                    </select>
+                </div>
+            </div>
+            <div id="container">
+                <button class="btAdForm" type="submit">Sauvegarder</button>
+                <button class="btAdForm" type="button" onclick="cancelForm()">Annuler</button>
+            </div>
         </div>
     </form>
 </div>
-
-
 <script type="text/javascript">
     function cancelForm() {
-        window.location = "[[@{/admin/gestionUser}]]";
+        window.location = "[[@{/admin/gestionDog}]]";
     }
 </script>
-
 </body>
 </html>

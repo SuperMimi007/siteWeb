@@ -23,8 +23,8 @@ public class CrudUserTests {
     @Test
     public void testAddNew() {
         User user = new User();
-        user.setName("Pre");
-        user.setFirstName("Christophe");
+        user.setUserLastName("Pre");
+        user.setUserFirstName("Christophe");
         user.setEmail("Christo@gmail.com");
         user.setPassword("Christo");
         user.setRole(Role.valueOf("USER"));
@@ -32,7 +32,7 @@ public class CrudUserTests {
         User savedUser = repo.save(user);
 
         Assertions.assertThat(savedUser).isNotNull();
-        Assertions.assertThat(savedUser.getId()).isGreaterThan(0);
+        Assertions.assertThat(savedUser.getUserId()).isGreaterThan(0);
     }
 
     @Test

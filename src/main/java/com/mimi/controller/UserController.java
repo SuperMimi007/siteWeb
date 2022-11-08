@@ -31,8 +31,8 @@ public class UserController {
 
 
     @GetMapping("/admin/gestionUser")
-    public String userList(@RequestParam(defaultValue = "User") String titleName, Model model, ModelMap modelMap) {
-        return service.fonctionUserList(titleName, model, modelMap);
+    public String userList(@RequestParam(defaultValue = "User") String titleName, Model model, ModelMap modelMap,String keyword) {
+        return service.fonctionUserList(titleName, model, modelMap,keyword);
     }
 
     //----------- ENDPOINT FORMULAIRE  USER -----------//
@@ -59,14 +59,7 @@ public class UserController {
         return service.fonctionDeleteUser(id, ra);
     }
 
-    //----------- ENDPOINT FORMULAIRE CHIEN -----------//
-    @GetMapping("/admin/gestionUser/newDog/{id}")
-    public String dogForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
-        System.out.println("formulaireChien");
-        return service.fonctionDogForm(id, model, ra);
 
-
-    }
 
 
 }

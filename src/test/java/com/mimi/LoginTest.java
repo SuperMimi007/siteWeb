@@ -17,14 +17,14 @@ import java.util.List;
 @Rollback(false)
 
 public class LoginTest {
-  /*  @Autowired
+   @Autowired
     private UserRepository userRepo;
     @Test
     public void testFindUserByEmail() {
-        String email = "testeur@gmail.com";
+        String email = "emilie@gmail.com";
         User user = userRepo.findByEmail(email);
         Assertions.assertThat(user).isNotNull();
-    }*/
+    }
 
 
 }

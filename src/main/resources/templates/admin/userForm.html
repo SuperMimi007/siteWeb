@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>[[${formTitle}]]</title>
-<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link th:href="@{/formulaires.css}" rel="stylesheet" />
 </head>
 <body>
 <div class="container-fluid">
     <form th:action="@{/admin/gestionUser/save}" method="post" th:object="${user}">
         <div class="userForm"><h2>[[${formTitle}]]</h2></div>
-        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{userId}"/>
         <div class=" border-secondary rounded p-5">
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Prénom :</label>
                 <div class="col-sm-8">
-                    <input type="text" th:field="*{firstName}" class="form-control"required minlength="3" maxlength="20"/>
+                    <input type="text" th:field="*{userFirstName}" class="form-control"required minlength="3" maxlength="20"/>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Nom :</label>
                 <div class="col-sm-8">
-                    <input type="text" th:field="*{name}" class="form-control"required minlength="3" maxlength="20"/>
+                    <input type="text" th:field="*{userLastName}" class="form-control"required minlength="3" maxlength="20"/>
                 </div>
             </div>
             <div class="form-group row">
@@ -51,13 +51,16 @@
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Role :</label>
                 <div class="col-sm-8">
-                    <input type="text" th:field="*{role}" class="form-control" required minlength="4" maxlength="10"/>
+                    <select style="border-radius: 5px" th:field="*{role}">
+                        <option th:value="ADMIN" th:text="ADMIN"></option>
+                        <option th:value="USER" th:text="USER"></option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Mot de Passe :</label>
                 <div class="col-sm-8">
-                    <input type="password" th:field="*{password}" class="form-control"required minlength="4" maxlength="10"/>
+                    <input type="password" th:field="*{password}" class="form-control" minlength="4" maxlength="10"/>
 
                 </div>
             </div>

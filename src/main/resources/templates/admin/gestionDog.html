@@ -31,6 +31,9 @@
                     </form>
                 </li>
                 <div>&nbsp</div>
+                <li><a th:href="@{/admin/gestionDog/new}">Ajout d'un compagnon</a></li>
+                <div>&nbsp</div>
+                <div>&nbsp</div>
                 <li><a th:href="@{/admin/gestionUser}">Gestion des utilisateurs</a></li>
             </ul>
             <div>&nbsp</div>
@@ -63,7 +66,7 @@
             <th:block th:each="dog : ${listDogs}">
                 <tr>
                     <td>[[${dog.dogName}]]</td>
-                    <td>[[${dog.user.firstName+" "+dog.user.name}]]</td>
+                    <td>[[${dog.user.UserFirstName+" "+dog.user.userLastName}]]</td>
                     <td>[[${dog.user.phone}]]</td>
                     <td>[[${dog.user.email}]]</td>
                     <td>[[${dog.dateOfBirth}]]</td>

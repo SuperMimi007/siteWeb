@@ -2,49 +2,53 @@ package com.mimi.modele;
 
 import com.mimi.config.Role;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name="id")
+    private Integer userId;
 
-    @Column(nullable = false, unique = true, length = 40)
+    @Column(unique = true, length = 40)
     private String email;
 
     @Column(nullable = false,length = 20)
-    private String name;
+    private String userLastName;
 
-    @Column(nullable = false,length = 20)
-    private String firstName;
+    @Column(length = 20)
+    private String userFirstName;
 
-    @Column(nullable = false, length = 64)
+    @Column(length = 64)
     private String password;
 
-    @Column(nullable = false,length = 50)
+    @Column(nullable = false,length = 90)
     private String address;
 
-    @Column(nullable = false,length = 20)
+    @Column(length = 20)
     private String phone;
 
-    @Column(nullable = false,length = 20)
+    @Column(length = 20)
     private String contact;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
+      public User() {}
 
+    public User(Integer userId) {
+        this.userId = userId;
+    }
 
-    public User() {}
-
-    public User(Integer id, String email, String name, String firstName, String password, String address, String phone, String contact, Role role) {
-        this.id = id;
+    public User(Integer userId, String email, String userLastName, String userFirstName, String password, String address, String phone, String contact, Role role) {
+        this.userId = userId;
         this.email = email;
-        this.name = name;
-        this.firstName = firstName;
+        this.userLastName = userLastName;
+        this.userFirstName = userFirstName;
         this.password = password;
         this.address = address;
         this.phone = phone;
@@ -52,28 +56,28 @@ public class User {
         this.role = role;
     }
 
-    public Integer getId(){
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getUserLastName() {
+        return userLastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserFirstName() {
+        return userFirstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
     }
 
     public String getEmail() {
@@ -86,11 +90,6 @@ public class User {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        BCryptPasswordEncoder passwordEncoder =new BCryptPasswordEncoder();
-        this.password=passwordEncoder.encode(password).toString();
     }
 
     public String getAddress() {
@@ -125,22 +124,24 @@ public class User {
         this.role = role;
     }
 
+    public void setPassword(String password) {
+        BCryptPasswordEncoder passwordEncoder =new BCryptPasswordEncoder();
+        this.password=passwordEncoder.encode(password).toString();
+    }
 
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userId=" + userId +
                 ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", nickname='" + firstName + '\'' +
+                ", userLastName='" + userLastName + '\'' +
+                ", userFirstName='" + userFirstName + '\'' +
                 ", password='" + password + '\'' +
-                ", adress='" + address + '\'' +
+                ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", contact='" + contact + '\'' +
                 ", role=" + role +
                 '}';
-
-
     }
 }

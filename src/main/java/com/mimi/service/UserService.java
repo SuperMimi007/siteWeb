@@ -1,18 +1,13 @@
 package com.mimi.service;
 
 
-import com.mimi.modele.Dog;
 import com.mimi.modele.User;
-import com.mimi.repository.DogRepository;
 import com.mimi.repository.UserRepository;
 import com.mimi.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,25 +21,23 @@ public class UserService {
 
     //----------- LISTE USERS + RECHERCHE -----------//
 
-    public List<User> listUsers(){
-        return (List<User>) repo.findAll();
-    }
 
-    public String fonctionUserList(String titleName, Model model, ModelMap modelMap){
-        modelMap.put("titleName",titleName);
-        model.addAttribute("listUsers", listUsers());
+
+    public String fonctionUserList(String titleName, Model model, ModelMap modelMap,String keyword) {
+        modelMap.put("titleName", titleName);
+        List<User> listUsers = repo.findAll();
+        model.addAttribute("listUsers", listUsers);
+        model.addAttribute("findByKeyword",keyword);
         return "admin/gestionUser";
     }
 
 
-    //----------- RECHERCHE-----------//
-    public List<User> listRecherche(String keyword) {
+    public List<User> findByKeyword(String keyword) {
         if (keyword != null){
-            return repo.findAll(keyword);
+            return repo.findByKeyword(keyword);
         }
         return repo.findAll();
     }
-
 
 
     //----------- FORMULAIRE USER-----------//
@@ -67,14 +60,6 @@ public class UserService {
         ra.addFlashAttribute("message", "action effectuée avec succès.");
         return "redirect:/admin/gestionUser";
     }
-
- /*   private void  encodePassword(User user){
-        BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
-        String encodedPassword =passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-    }*/
-
-    //----------- UPDATE-----------//
 
     public User get(Integer  id) throws UserNotFoundException {
         Optional<User> result =repo.findById(id);
@@ -100,40 +85,22 @@ public class UserService {
     //----------- DELETE-----------//
 
 
-    public void delete(Integer id) throws UserNotFoundException {
-        Integer count = repo.countById(id);
+    public void delete(Integer userId) throws UserNotFoundException {
+        Integer count = repo.countByUserId(userId);
         if (count == null || count == 0) {
-            throw new UserNotFoundException("id introuvable" + id);
+            throw new UserNotFoundException("id introuvable" + userId);
         }
-        repo.deleteById(id);
+        repo.deleteById(userId);
     }
 
-    public String fonctionDeleteUser (@PathVariable("id") Integer id, RedirectAttributes ra) {
+    public String fonctionDeleteUser (@PathVariable("userId") Integer userId, RedirectAttributes ra) {
         try {
-            delete(id);
+            delete(userId);
             ra.addFlashAttribute("message","action effectuée avec succès.");
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin/gestionUser";
     }
-
-
-    //----------- AJOUT CHIEN-----------//
-
-
-    public String fonctionDogForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
-        try{
-            System.out.println("entrée formulaire OK ");
-            model.addAttribute("user", get(id));
-            model.addAttribute("dog", new Dog());
-            model.addAttribute("formTitle", "Ajout d'un nouveau compagnon");
-            System.out.println("sortie formulaire  OK ");
-        } catch (UserNotFoundException e) {
-            ra.addFlashAttribute("message", e.getMessage());
-        }
-        return "admin/dogForm";
-    }
-
 
 }
