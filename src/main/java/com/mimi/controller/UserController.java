@@ -1,7 +1,7 @@
 package com.mimi.controller;
 
 import com.mimi.modele.User;
-import com.mimi.service.DogService;
+import com.mimi.repository.UserRepository;
 import com.mimi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,11 +10,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 
 @Controller
 public class UserController {
     @Autowired UserService service;
-
+    @Autowired UserRepository repo;
     //----------- ENDPOINT CONNEXION -----------//
 
     @GetMapping("/admin/login")
@@ -32,7 +34,12 @@ public class UserController {
 
     @GetMapping("/admin/gestionUser")
     public String userList(@RequestParam(defaultValue = "User") String titleName, Model model, ModelMap modelMap,String keyword) {
-        return service.fonctionUserList(titleName, model, modelMap,keyword);
+        // return service.fonctionUserList(titleName, model, modelMap,keyword);
+        modelMap.put("titleName", titleName);
+        List<User> listUsers = repo.findAll();
+        model.addAttribute("listUsers", listUsers);
+        model.addAttribute("findByKeyword",keyword);
+        return "admin/gestionUser";
     }
 
     //----------- ENDPOINT FORMULAIRE  USER -----------//
