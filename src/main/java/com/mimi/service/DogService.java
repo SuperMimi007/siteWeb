@@ -17,14 +17,14 @@ import java.util.Optional;
 
 @Service
 public class DogService {
-    @Autowired private DogRepository repo;
+    @Autowired private DogRepository dogRepo;
     @Autowired private UserRepository userRepo;
 
 
     //---------------------------------------------------//
 
     public String fonctionDogList(String titleName, Model model, ModelMap modelMap){
-        List<Dog> listDogs=repo.findAll();
+        List<Dog> listDogs=dogRepo.findAll();
         modelMap.put("titleName",titleName);
         model.addAttribute("listDogs", listDogs);
         return "admin/gestionDog";
@@ -44,24 +44,26 @@ public class DogService {
     //----------- SAUVEGARDE CHIEN-----------//
 
         public String fonctionSaveDog(Dog dog, RedirectAttributes ra) {
-        repo.save(dog);
+        dogRepo.save(dog);
         ra.addFlashAttribute("message", "action effectuée avec succès.");
         return "redirect:/admin/gestionDog";
     }
 
     //---------------------------------------------------//
 
-    public Dog get(Integer id) throws UserNotFoundException {
-        Optional<Dog> result =repo.findById(id);
+    public Dog get(Integer dogId) throws UserNotFoundException {
+        Optional<Dog> result =dogRepo.findById(dogId);
 
         if (result.isPresent()){
             return  result.get();
         }
-        throw new UserNotFoundException("id introuvable"+ id);
+        throw new UserNotFoundException("id introuvable"+ dogId);
     }
 
     public String fonctionEditDog(@PathVariable("dogId") Integer dogId, Model model, RedirectAttributes ra) {
         try {
+            List<User> usersName = userRepo.findAll();
+            model.addAttribute("usersName",usersName);
             model.addAttribute("dog", get(dogId));
             model.addAttribute("formTitle", "Modification d'un compagnon");
             model.addAttribute("message", "action effectuée avec succès.");
@@ -76,11 +78,11 @@ public class DogService {
 
 
     public void delete(Integer dogId) throws UserNotFoundException {
-        Integer count = repo.countByDogId(dogId);
+        Integer count = dogRepo.countByDogId(dogId);
         if (count == null || count == 0) {
             throw new UserNotFoundException("id introuvable" + dogId);
         }
-        repo.deleteById(dogId);
+        dogRepo.deleteById(dogId);
     }
 
     public String fonctionDeleteDog (@PathVariable("dogId") Integer dogId, RedirectAttributes ra) {

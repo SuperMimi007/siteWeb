@@ -10,7 +10,7 @@
 <div class="container-fluid">
     <form th:action="@{/admin/gestionDog/save}" method="post" th:object="${dog}">
         <div class="userForm"><h2>[[${formTitle}]]</h2></div>
-
+        <input type="hidden" th:field="*{dogId}"/>
         <div class=" border-secondary rounded p-5">
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Compagnon:</label>
@@ -54,7 +54,7 @@
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Maitre :</label>
                 <div class="col-sm-8">
-                    <select  style="border-radius: 5px" th:field="*{user}">
+                    <select th:field="*{user}" style="border-radius: 5px" >
                            <option  th:each="Uname : ${usersName}"
                                     th:value="${Uname.userId}"
                                     th:text="${Uname.userFirstName} + ' ' + ${Uname.userLastName}">

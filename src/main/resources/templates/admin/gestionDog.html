@@ -74,7 +74,7 @@
                     <td>[[${dog.sexe}]]</td>
                     <td>[[${dog.sterilization}]]</td>
                     <td>
-                        <a class="adminAction" th:href="@{'/admin/gestionDog/edit/'+${dogId}}"
+                        <a class="adminAction" th:href="@{'/admin/gestionDog/edit/'+${dog.dogId}}"
                            style="color:darkslategrey;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-pencil" viewBox="0 0 16 16">
@@ -82,7 +82,7 @@
                             </svg>
                         </a>
                         <br/>
-                        <a class="adminAction" th:href="@{'/admin/gestionDog/delete/'+${dogId}}"
+                        <a class="adminAction" th:href="@{'/admin/gestionDog/delete/'+${dog.dogId}}"
                            style="color:darkslategrey;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-trash" viewBox="0 0 16 16">
