@@ -1,6 +1,7 @@
 package com.mimi.controller;
 
 import com.mimi.modele.Dog;
+import com.mimi.repository.DogRepository;
 import com.mimi.service.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,17 +10,24 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 
 @Controller
 public class DogController {
     @Autowired DogService Dogservice;
-
+    @Autowired DogRepository repo;
 
     //----------- ENDPOINT CHIEN  LIST + PAGE GESTION CHIEN -----------//
 
     @GetMapping("/admin/gestionDog")
-    public String dogList(@RequestParam(defaultValue = "Dog") String titleName, Model model, ModelMap modelMap) {
-        return Dogservice.fonctionDogList(titleName, model, modelMap);
+    public String dogList(@RequestParam(defaultValue = "Dog") String titleName, Model model, ModelMap modelMap,String keyword) {
+        // return service.fonctionDogList(titleName, model, modelMap,keyword);
+        modelMap.put("titleName", titleName);
+        List<Dog> listDogs = repo.findAll();
+        model.addAttribute("listDogs", listDogs);
+        model.addAttribute("findByKeyword",keyword);
+        return "admin/gestionDog";
     }
 
     //----------- ENDPOINT FORMULAIRE CHIEN -----------//
