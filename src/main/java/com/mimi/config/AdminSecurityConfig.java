@@ -31,7 +31,7 @@ public class AdminSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain1(HttpSecurity http) throws Exception {
         http
-                //.csrf().disable()
+                .csrf().disable()
                 .authorizeRequests().antMatchers("/").permitAll();
 
         http.antMatcher("/admin/**")

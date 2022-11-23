@@ -1,9 +1,10 @@
 package com.mimi.controller;
 
+import com.mimi.config.LoginUserDetails;
 import com.mimi.modele.User;
-import com.mimi.service.DogService;
 import com.mimi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -13,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
-    @Autowired UserService service;
+    @Autowired private UserService service;
+
+
 
     //----------- ENDPOINT CONNEXION -----------//
 
@@ -31,7 +34,7 @@ public class UserController {
 
 
     @GetMapping("/admin/gestionUser")
-    public String userList(@RequestParam(defaultValue = "User") String titleName, Model model, ModelMap modelMap,String keyword) {
+    public String userList(@Param("keyword") String keyword,String titleName, Model model, ModelMap modelMap) {
         return service.fonctionUserList(titleName, model, modelMap,keyword);
     }
 
@@ -43,8 +46,8 @@ public class UserController {
 
     //----------- ENDPOINT UPDATE USER -----------//
     @PostMapping("/admin/gestionUser/save")
-    public String saveUser(User user, RedirectAttributes ra) {
-        return service.fonctionSaveUser(user, ra);
+    public String saveUser(User user, Model model,RedirectAttributes ra) {
+        return service.fonctionSaveUser(user, model,ra);
     }
 
     @GetMapping("/admin/gestionUser/edit/{id}")
@@ -58,8 +61,4 @@ public class UserController {
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         return service.fonctionDeleteUser(id, ra);
     }
-
-
-
-
 }

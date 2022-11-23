@@ -14,7 +14,7 @@
     <h1>Un amour de chien 93</h1>
 </div>
 <div class="bannerConnection">
-    <div><h2 id="bonjour"> Gestion des Clients</h2></div>
+    <h2 id="bonjour"> Gestion des comptes-rendus</h2>
 </div>
 <section>
     <nav class="menuAdmin">
@@ -22,21 +22,23 @@
         <div>
             <ul>
                 <li>
-                    <form class ="recherche" th :action="@{/admin/gestionDog}" method ="get" >
-                        <input type="text" name="keyword" th:value="${keyword}"  required/>
+                    <form class ="recherche" th action="@{/}">
+                        <label>
+                            <input type="text" name="Filtre" required/>
+                        </label>
                         &nbsp
                         <input type="submit" value="Rechercher"/>
                         &nbsp
-                        <input type="button" value="Effacer"  onclick="clearFilter()"/>
+                        <input type="submit" value="Effacer"/>
                     </form>
                 </li>
                 <div>&nbsp</div>
-                <li><a th:href="@{/admin/gestionDog/new}">Ajout d'un compagnon</a></li>
+                <li><a th:href="@{/admin/gestionReport/new}">Ajout Compte Rendu</a></li>
                 <div>&nbsp</div>
                 <div>&nbsp</div>
                 <li><a th:href="@{/admin/gestionUser}">Gestion des utilisateurs</a></li>
                 <div>&nbsp</div>
-                <li><a th:href="@{/admin/gestionReport}">Gestion des comptes-rendus</a></li>
+                <li><a th:href="@{/admin/gestionDog}">Gestion des compagnons</a></li>
             </ul>
             <div>&nbsp</div>
             <form th:action="@{/admin/logout}" method="post">
@@ -57,30 +59,21 @@
             <tr>
                 <th>Compagnon</th>
                 <th>Maitre</th>
-                <th>Téléphone</th>
-                <th>Mail</th>
-                <th>Naissance</th>
-                <th>Race</th>
-                <th>Sexe</th>
-                <th>Stérilisation</th>
+                <th>Compte-rendu</th>
+                <th>Date</th>
                 <th>Mise à  jour</th>
             </tr>
             </thead>
             <tbody>
-
-            <!--/*@thymesVar id="listDogs" type="Dog"*/-->
-            <th:block th:each="dog : ${listDogs}">
+            <!--/*@thymesVar id="listReports" type="Report"*/-->
+            <th:block th:each="report : ${listReports}">
                 <tr>
-                    <td>[[${dog.dogName}]]</td>
-                    <td>[[${dog.user.UserFirstName+" "+dog.user.userLastName}]]</td>
-                    <td>[[${dog.user.phone}]]</td>
-                    <td>[[${dog.user.email}]]</td>
-                    <td>[[${dog.dateOfBirth}]]</td>
-                    <td>[[${dog.breed}]]</td>
-                    <td>[[${dog.sexe}]]</td>
-                    <td>[[${dog.sterilization}]]</td>
+                    <td>Nom chien</td>
+                    <td>Maitre</td>
+                    <td>[[${report.reportName}]]</td>
+                    <td>[[${report.dateOfReport}]]</td>
                     <td>
-                        <a class="adminAction" th:href="@{'/admin/gestionDog/edit/'+${dog.dogId}}"
+                        <a class="adminAction" th:href="@{'/admin/gestionReport/edit/'+${report.reportId}}"
                            style="color:darkslategrey;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-pencil" viewBox="0 0 16 16">
@@ -88,7 +81,7 @@
                             </svg>
                         </a>
                         <br/>
-                        <a class="adminAction" th:href="@{'/admin/gestionDog/delete/'+${dog.dogId}}"
+                        <a class="adminAction" th:href="@{'/admin/gestionReport/delete/'+${report.reportId}}"
                            style="color:darkslategrey;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-trash" viewBox="0 0 16 16">
@@ -104,10 +97,5 @@
         </table>
     </article>
 </section>
-<script TYPE="text/javascript">
-    function clearFilter(){
-        window.location='/admin/gestionDog';
-    }
-</script>
 </body>
 </html>

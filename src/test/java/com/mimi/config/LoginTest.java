@@ -1,5 +1,4 @@
-package com.mimi;
-
+package com.mimi.config;
 import com.mimi.modele.User;
 import com.mimi.repository.UserRepository;
 import org.assertj.core.api.Assertions;
@@ -17,14 +16,13 @@ import java.util.List;
 @Rollback(false)
 
 public class LoginTest {
-   @Autowired
+    @Autowired
     private UserRepository userRepo;
-    @Test
+
+   /* @Test
     public void testFindUserByEmail() {
         String email = "emilie@gmail.com";
         User user = userRepo.findByEmail(email);
         Assertions.assertThat(user).isNotNull();
-    }
-
-
+    }*/
 }

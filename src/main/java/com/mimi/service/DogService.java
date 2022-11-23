@@ -6,6 +6,7 @@ import com.mimi.modele.User;
 import com.mimi.repository.DogRepository;
 import com.mimi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -23,10 +24,17 @@ public class DogService {
 
     //---------------------------------------------------//
 
-    public String fonctionDogList(String titleName, Model model, ModelMap modelMap){
-        List<Dog> listDogs=dogRepo.findAll();
+    public List<Dog> listAll(String keyword){
+        if(keyword != null){
+            return dogRepo.findAll(keyword);
+        }
+        return dogRepo.findAll();
+    }
+        public String fonctionDogList(String titleName, Model model, ModelMap modelMap,@Param("keyword") String keyword){
+        List<Dog> listDogs=listAll(keyword);
         modelMap.put("titleName",titleName);
         model.addAttribute("listDogs", listDogs);
+            model.addAttribute("keyword",keyword);
         return "admin/gestionDog";
     }
 

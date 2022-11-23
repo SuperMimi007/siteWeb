@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Bootstrap Upload File</title>
+
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2>Télécharger un compte_rendu</h2>
+                <form method="post" th:action="@{/admin/gestionReport/reportUpload}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" name="file" class="form-control-file">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Télécharger le fichier</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

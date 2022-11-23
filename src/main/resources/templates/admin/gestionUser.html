@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <meta charset="UTF-8">
     <title>Gestion des admins</title>
@@ -22,15 +23,19 @@
             <ul>
                 <li>
                     <form class ="recherche" th :action="@{/admin/gestionUser}" method ="get" >
-                        <input type="text" name="keyword" required>
+                        <input type="text" name="keyword" th:value="${keyword}"  required/>
                         &nbsp
-                        <button type="submit" >Rechercher</button>
+                        <input type="submit" value="Rechercher"/>
+                        &nbsp
+                        <input type="button" value="Effacer"  onclick="clearFilter()"/>
                     </form>
                 </li>
-                <div>&nbsp</div>
+                &nbsp
                 <li><a th:href="@{/admin/gestionUser/new}">Ajout d'un utilisateur</a></li>
-                <div>&nbsp</div>
+                &nbsp
                 <li><a th:href="@{/admin/gestionDog}">Gestion des compagnons</a></li>
+                &nbsp
+                <li><a th:href="@{/admin/gestionReport}">Gestion des comptes-rendus</a></li>
             </ul>
             <form th:action="@{/admin/logout}" method="post">
                 <input id="submit" type="submit" value="Déconnexion">
@@ -54,13 +59,13 @@
             </tr>
             </thead>
             <tbody>
+            <!--/*@thymesVar id="listUsers" type="User"*/-->
             <tr th:each="user : ${listUsers}">
                 <td>[[${user.userLastName}]]</td>
                 <td>[[${user.userFirstName}]]</td>
                 <td>[[${user.email}]]</td>
                 <td th:align="center">[[${user.role}]]</td>
                 <td>
-
                     <a class="adminAction" th:href="@{'/admin/gestionUser/edit/'+${user.userId}}"
                        style="color:darkslategrey">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -83,5 +88,10 @@
         </table>
     </article>
 </section>
+<script TYPE="text/javascript">
+function clearFilter(){
+    window.location='/admin/gestionUser';
+}
+</script>
 </body>
 </html>

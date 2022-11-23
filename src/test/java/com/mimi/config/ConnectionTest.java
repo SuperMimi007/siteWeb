@@ -1,11 +1,12 @@
-package com.mimi;
+package com.mimi.config;
 
 import org.junit.jupiter.api.Test;
 
 import java.sql.*;
 
+
 public class ConnectionTest {
-@Test
+    @Test
     public static void main(String...args){
         Connection conn =null;
         try {
@@ -26,7 +27,7 @@ public class ConnectionTest {
                 if (conn!=null) {
                     conn.close();
                 }
-                }catch (SQLException e){
+            }catch (SQLException e){
                 e.printStackTrace();
             }
         }

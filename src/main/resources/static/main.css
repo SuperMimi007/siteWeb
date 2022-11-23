@@ -5,7 +5,6 @@
 
 
 #logo_img {
-    float: left;
     width : 100px;
     height : auto;
     border-radius: 30px;
@@ -24,18 +23,18 @@
 }
 
 .bannerTop h1 {
-    vertical-align: center;
     color : #222E13;
     font-size: 50px;
     font-weight: bold;
     font-style: italic;
+    display: block;
+    text-align: left;
 }
 
 
 .bannerTop a{
     font-size: 35px;
     margin-right: 20px;
-    vertical-align: center;
     cursor: pointer;
     font-weight: bold;
     color: #222E13;
@@ -56,7 +55,6 @@
 }
 
 .bannerConnection h2 {
-    vertical-align: center;
     color : #FFFFFF;
     font-size: 35px;
     padding-top: 10px;

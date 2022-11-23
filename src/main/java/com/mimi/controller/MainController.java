@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
     @RequestMapping("/AmourChien93")
-    public String homePage() {
-        return "homePage";}
+    public String homePage() {return "homePage";}
 
     @RequestMapping("/page/propos")
     public String ProposPage() {

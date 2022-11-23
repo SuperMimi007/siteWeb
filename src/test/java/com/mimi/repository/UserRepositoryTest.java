@@ -1,4 +1,4 @@
-package com.mimi;
+package com.mimi.repository;
 
 import com.mimi.config.Role;
 import com.mimi.modele.User;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
-public class CrudUserTests {
+public class UserRepositoryTest {
     @Autowired
     private UserRepository repo;
 
@@ -27,6 +27,9 @@ public class CrudUserTests {
         user.setUserFirstName("Christophe");
         user.setEmail("Christo@gmail.com");
         user.setPassword("Christo");
+        user.setAddress("44 rue des prés 93160 Noisy");
+        user.setPhone("01.65.96.36.56");
+        user.setContact("vétérinaire");
         user.setRole(Role.valueOf("USER"));
 
         User savedUser = repo.save(user);
@@ -72,7 +75,6 @@ public class CrudUserTests {
         Optional<User> optionalUser = repo.findById(userId);
         Assertions.assertThat(optionalUser).isNotPresent();
     }
-
 
 
 }
