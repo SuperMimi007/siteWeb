@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public interface DogRepository  extends JpaRepository<Dog, Integer> {
     Integer countByDogId(Integer dogId);
+    List<Dog> findAll();
 
     @Query(value="SELECT d FROM Dog d WHERE "
             +  "CONCAT(d.dogName, d.user.userLastName)"

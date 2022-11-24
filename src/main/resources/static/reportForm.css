@@ -1,36 +1,47 @@
+.userForm{
+    text-align: center;
+    padding-top: 10px;
+    color : #222E13;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
 
-input[type=file], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #1affff;
 }
 
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
+form{
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #222E13;
+    border-radius: 30px;
+}
+
+label{
     color: white;
+    font-weight: bold;
+}
+
+#container{
+    text-align: center;
+}
+
+h2{
+    color: #c3e6cb;
+}
+
+.btAdForm{
+    background-color: #c3e6cb;
+    border-radius: 10px;
+    border: none;
+    color: #222E13;
     padding: 10px;
+    margin: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin-left: 45%;
     cursor: pointer;
 }
 
-.button4 {
-    border-radius: 10px;
-}
 
-div {
-    border-radius: 5px;
-    background-color: #a6a6a6;
-    padding: 10px;
-    width: 50%;
-    margin: auto;
+.col-sm-8{
+    padding-bottom: 10px;
 }

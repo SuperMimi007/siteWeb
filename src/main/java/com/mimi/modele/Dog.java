@@ -12,6 +12,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @Builder
 @Entity
+@ToString
 public class Dog {
 
     @Id
@@ -36,16 +37,4 @@ public class Dog {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Override
-    public String toString() {
-        return "Dog{" +
-                "dogId=" + dogId +
-                ", dogName='" + dogName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", breed='" + breed + '\'' +
-                ", sexe='" + sexe + '\'' +
-                ", sterilization='" + sterilization + '\'' +
-                ", user=" + user +
-                '}';
-    }
 }

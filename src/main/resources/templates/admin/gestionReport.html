@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestion des Clients</title>
-    <link th:href="@{/gestionDog.css}" rel="stylesheet"/>
+    <link th:href="@{/gestionReport.css}" rel="stylesheet"/>
     <link th:href="@{/main.css}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
@@ -22,19 +22,16 @@
         <div>
             <ul>
                 <li>
-                    <form class ="recherche" th action="@{/}">
-                        <label>
-                            <input type="text" name="Filtre" required/>
-                        </label>
+                    <form class ="recherche" th :action="@{/admin/gestionUser}" method ="get" >
+                        <input type="text" name="keyword" th:value="${keyword}"  required/>
                         &nbsp
                         <input type="submit" value="Rechercher"/>
                         &nbsp
-                        <input type="submit" value="Effacer"/>
+                        <input type="button" value="Effacer"  onclick="clearFilter()"/>
                     </form>
                 </li>
                 <div>&nbsp</div>
                 <li><a th:href="@{/admin/gestionReport/new}">Ajout Compte Rendu</a></li>
-                <div>&nbsp</div>
                 <div>&nbsp</div>
                 <li><a th:href="@{/admin/gestionUser}">Gestion des utilisateurs</a></li>
                 <div>&nbsp</div>
@@ -49,7 +46,6 @@
         </div>
     </nav>
     <article>
-
         <!--/*@thymesVar id="message" type="message"*/-->
         <div th:if="${message}" class="alert alert-success text-center">
             [[${message}]]
@@ -59,8 +55,7 @@
             <tr>
                 <th>Compagnon</th>
                 <th>Maitre</th>
-                <th>Compte-rendu</th>
-                <th>Date</th>
+                <th>Nom du fichier</th>
                 <th>Mise à  jour</th>
             </tr>
             </thead>
@@ -70,10 +65,9 @@
                 <tr>
                     <td>Nom chien</td>
                     <td>Maitre</td>
-                    <td>[[${report.reportName}]]</td>
-                    <td>[[${report.dateOfReport}]]</td>
+                    <td> <a th:href="@{'/reportDownload?reportId='+${report.reportId}}">[[${report.reportName}]]</a></td>
                     <td>
-                        <a class="adminAction" th:href="@{'/admin/gestionReport/edit/'+${report.reportId}}"
+                        <a class="adminAction" th:href="@{'/admin/gestionReport/edit/'+${report.reportId} }"
                            style="color:darkslategrey;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-pencil" viewBox="0 0 16 16">

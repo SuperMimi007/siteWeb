@@ -22,7 +22,7 @@ public class DogService {
     @Autowired private UserRepository userRepo;
 
 
-    //---------------------------------------------------//
+    //----------- LISTE USERS + RECHERCHE/FILTRE -----------//
 
     public List<Dog> listAll(String keyword){
         if(keyword != null){
@@ -38,7 +38,13 @@ public class DogService {
         return "admin/gestionDog";
     }
 
-    //----------- AJOUT CHIEN-----------//
+    //----------- PAGINATION -----------//
+
+
+
+
+
+    //----------- FORMULAIRE----------//
 
 
     public String fonctionDogForm(Model model) {
@@ -49,7 +55,7 @@ public class DogService {
         return "admin/dogForm";
     }
 
-    //----------- SAUVEGARDE CHIEN-----------//
+    //----------- SAVE-----------//
 
         public String fonctionSaveDog(Dog dog, RedirectAttributes ra) {
         dogRepo.save(dog);
@@ -57,7 +63,7 @@ public class DogService {
         return "redirect:/admin/gestionDog";
     }
 
-    //---------------------------------------------------//
+    //----------- EDIT-----------//
 
     public Dog get(Integer dogId) throws UserNotFoundException {
         Optional<Dog> result =dogRepo.findById(dogId);
@@ -82,7 +88,7 @@ public class DogService {
         }
     }
 
-    //---------------------------------------------------//
+    //----------- DELETE-----------//
 
 
     public void delete(Integer dogId) throws UserNotFoundException {

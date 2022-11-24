@@ -14,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
+@ToString
 public class User {
 
     @Id
@@ -51,24 +52,8 @@ public class User {
         this.password=passwordEncoder.encode(password).toString();
     }
 
-
     public String getFullName(){
         return getUserFirstName()+" "+getUserLastName();
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", email='" + email + '\'' +
-                ", userLastName='" + userLastName + '\'' +
-                ", userFirstName='" + userFirstName + '\'' +
-                ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", contact='" + contact + '\'' +
-                ", role=" + role +
-                '}';
     }
 
 

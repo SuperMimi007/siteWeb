@@ -1,7 +1,9 @@
 package com.mimi.service;
 
 import com.mimi.config.LoginUserDetails;
+import com.mimi.modele.Dog;
 import com.mimi.modele.User;
+import com.mimi.repository.DogRepository;
 import com.mimi.repository.UserRepository;
 import com.mimi.exception.UserNotFoundException;
 import com.mimi.service.UserService;
@@ -23,13 +25,14 @@ public class UserService {
 
     private UserRepository userRepository;
 
+
     public UserService(UserRepository userRepository) {
         this.userRepository=userRepository;
     }
 
 
 
-    //----------- LISTE USERS + RECHERCHE -----------//
+    //----------- LISTE USERS + RECHERCHE/FILTRE -----------//
 
 
     public List<User> listAll(String keyword){
@@ -51,14 +54,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
- /*   public String fonctionUserList(String titleName, Model model, ModelMap modelMap){
-        model.addAttribute("listUsers", getAllUsers());
-        modelMap.put("titleName", titleName);
-        return "admin/gestionUser";
-    }*/
+    //----------- PAGINATION -----------//
 
 
-    //----------- FORMULAIRE USER-----------//
+    //----------- FORMULAIRE-----------//
     public String fonctionUserForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("formTitle", "Ajout d'un nouvel user");
@@ -67,13 +66,9 @@ public class UserService {
 
 
 
-    //----------- SAUVEGARDE-----------//
-
-
+    //----------- SAVE-----------//
 
     public User saveUser(User user){
-
-
         return userRepository.save(user);
     }
 
@@ -83,7 +78,7 @@ public class UserService {
         return "redirect:/admin/gestionUser";
     }
 
-
+    //----------- EDIT-----------//
 
     public User get(Integer  id) throws UserNotFoundException {
         Optional<User> getUser =userRepository.findById(id);

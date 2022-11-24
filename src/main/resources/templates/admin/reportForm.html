@@ -2,27 +2,44 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Spring Boot Thymeleaf Application - Bootstrap Upload File</title>
-
+    <title>[[${formTitle}]]</title>
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:href="@{/reportForm.css}" rel="stylesheet"/>
 </head>
 <body>
-
-<section class="my-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 mx-auto">
-                <h2>Télécharger un compte_rendu</h2>
-                <form method="post" th:action="@{/admin/gestionReport/reportUpload}" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <input type="file" name="file" class="form-control-file">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Télécharger le fichier</button>
-                </form>
+<div class="container-fluid">
+    <form method="post" th:action="@{/admin/gestionReport/reportUpload}" enctype="multipart/form-data">
+        <div class="userForm"><h2>[[${formTitle}]]</h2></div>
+        <!--        <input type="hidden" th:field="*{dogId}"/>-->
+        <div class=" border-secondary rounded p-5">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Sélectionner unCompagnon:</label>
+                <div class="col-sm-8">
+                    <!-- <select th:field="*{dog}" style="border-radius: 5px" >
+                         <option  th:each="Dname : ${dogsName}"
+                                  th:value="${Dname.dogId}"
+                                  th:text="${Dname.dogName}">
+                         </option>
+                     </select>-->
+                </div>
             </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Compte_rendu :</label>
+                    <div class="col-sm-8">
+                        <input  type="file" name="report" class="form-control-file">
+                    </div>
+                </div>
+                <div id="container">
+                    <button class="btAdForm" type="submit" >Télécharger le fichier</button>
+                    <button class="btAdForm" type="button" onclick="cancelForm()">Annuler</button>
+                </div>
         </div>
-    </div>
-</section>
-
+    </form>
+</div>
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/admin/gestionReport}]]";
+    }
+</script>
 </body>
 </html>

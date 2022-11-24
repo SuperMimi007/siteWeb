@@ -13,6 +13,7 @@ import java.util.Arrays;
 @NoArgsConstructor
 @Builder
 @Entity
+@ToString
 public class Report {
 
     @Id
@@ -22,6 +23,8 @@ public class Report {
     @Column(length =100,nullable = false,unique = true)
     private String reportName;
 
+    private Date uploadTime;
+
     private Date dateOfReport;
 
     private long size;
@@ -29,20 +32,12 @@ public class Report {
     @Column(length =45)
     private byte [] content;
 
+
+
+
 /*    @ManyToOne
     @JoinColumn(name = "dog_id")
     private Dog dog;*/
 
 
-
-    @Override
-    public String toString() {
-        return "Report{" +
-                "reportId=" + reportId +
-                ", reportName='" + reportName + '\'' +
-                ", dateOfReport=" + dateOfReport +
-                ", size=" + size +
-                ", content=" + Arrays.toString(content) +
-                '}';
-    }
 }
