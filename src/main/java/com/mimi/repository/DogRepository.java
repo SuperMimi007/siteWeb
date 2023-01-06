@@ -15,7 +15,7 @@ public interface DogRepository  extends JpaRepository<Dog, Integer> {
     List<Dog> findAll();
 
     @Query(value="SELECT d FROM Dog d WHERE "
-            +  "CONCAT(d.dogName, d.user.userLastName)"
+            +  "CONCAT(d.dogName, d.user.userLastName,d.user.userFirstName)"
             + "LIKE %?1%")
     public List<Dog> findAll (String keyword);
 }

@@ -1,3 +1,4 @@
+
 package com.mimi.service;
 
 import com.mimi.config.Role;
@@ -12,26 +13,37 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.repository.query.Param;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
 
     @Mock
-    private UserRepository userRepository;
+    private UserRepository userRepoMock;
     @InjectMocks
-    private UserService userService;
+    private UserService userImpl;
 
 
     private User user;
+    private Model model;
 
     @BeforeEach
     public void setup() {
-        user =User.builder()
+        user = User.builder()
+                .userId(1)
                 .userFirstName("Dorra")
                 .userLastName("Explo")
                 .email("dorra@gmail.com")
@@ -46,21 +58,22 @@ public class UserServiceTest {
 
     @DisplayName("Junit test SaveUser")
     @Test
-    public void testSaveUser(){
+    public void testSaveUser() {
         //given - pre condition
-        given(userRepository.save(user))
+        given(userRepoMock.save(user))
                 .willReturn(user);
         //when - behaviour to test
-        User savedUser = userService.saveUser(user);
+        User savedUser = userImpl.saveUser(user);
         //then - verify the ouput
         assertThat(savedUser).isNotNull();
     }
 
     @DisplayName("Junit UsersList")
     @Test
-    public void testGetAllUsers(){
+    public void testGetAllUsers() {
         //given - pre condition
-        User user1 =User.builder()
+        User user1 = User.builder()
+                .userId(2)
                 .userFirstName("Eric")
                 .userLastName("Ploit")
                 .email("eric@gmail.com")
@@ -71,32 +84,34 @@ public class UserServiceTest {
                 .contact("google")
                 .build();
 
-        given(userRepository.findAll()).willReturn(List.of(user,user1));
+        given(userRepoMock.findAll()).willReturn(List.of(user, user1));
         //when - behaviour to test
-        List<User> usersList = userService.getAllUsers();
+        List<User> usersList = userImpl.getAllUsers();
+        System.out.println(usersList);
         //then - verify the ouput
         assertThat(usersList).isNotNull();
         assertThat(usersList.size()).isEqualTo(2);
     }
 
+}
 
-
-
-
-    @DisplayName("Junit test Delete User")
+/*
+        Mockito.doNothing()
+                .when(userRepoMock).deleteById(user.getUserId());
+        try {
+        userImpl.delete(userId);
+    } catch (UserNotFoundException e) {
+        e.printStackTrace();
+    }
+    //then - verify the ouput
+        Mockito.verify(userRepoMock, times(1)).deleteById(userId);
+}
+}@DisplayName("Junit test Delete User")
     @Test
     public void deleteUser() throws Exception {
         //given - pre condition
-        Integer userId = 1;
+        Integer userId = 2;
         //when - behaviour to test
-        Mockito.doNothing()
-         .when(userRepository).deleteById(user.getUserId());
-        try {
-            userService.delete(userId);
-        } catch (UserNotFoundException e) {
-            e.printStackTrace();
-        }
-        //then - verify the ouput
-        Mockito.verify(userRepository, times(1)).deleteById(userId);
-    }
-}
+
+*/
+

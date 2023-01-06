@@ -1,0 +1,86 @@
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Montserrat, Helvetica, sans-serif;
+    /*display: flex;*/
+    flex-direction: column;
+
+}
+
+
+/*-----------------Content-----------------*/
+#content{
+    display :flex;
+    flex-wrap: wrap;
+}
+
+
+div#content div.rightBox{
+    vertical-align: top;
+    width: 50%;
+    padding: 10px;
+    background-color: #222E13;
+    color: #c3e6cb;
+}
+
+
+div#content div.conseil{
+    width: 50%;
+    background-image: url("images/arrivee.jpeg");
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-width: 350px;
+}
+
+div#content div.cours{
+    width: 50%;
+    background-image: url("images/ninaEduc.jpg");
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-width: 350px;
+}
+div#content div.balade{
+    width: 50%;
+    background-image: url("images/chienPromenade.jpeg");
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-width: 350px;
+}
+div#content div.coaching{
+    width: 50%;
+    background-image: url("images/maison.jpg");
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-width: 350px;
+}
+
+p{
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+h2{
+    font-family: Montserrat, Helvetica, sans-serif;
+    text-align: center;
+    color: #c3e6cb;
+}
+
+
+
+
+
+
+
+

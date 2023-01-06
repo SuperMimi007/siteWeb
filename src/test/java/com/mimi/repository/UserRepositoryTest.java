@@ -2,18 +2,18 @@ package com.mimi.repository;
 
 import com.mimi.config.Role;
 import com.mimi.modele.User;
-import com.mimi.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.Optional;
 
+
+@ExtendWith(SpringExtension.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 public class UserRepositoryTest {
     @Autowired
@@ -21,7 +21,7 @@ public class UserRepositoryTest {
 
 
     @Test
-    public void testAddNew() {
+    public void save() {
         User user = new User();
         user.setUserLastName("Pre");
         user.setUserFirstName("Christophe");

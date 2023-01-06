@@ -1,20 +1,14 @@
 package com.mimi.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 
 @Controller
 public class MainController {
 
     @RequestMapping("/AmourChien93")
     public String homePage() {return "homePage";}
-
-    @RequestMapping("/page/propos")
-    public String ProposPage() {
-        return "/page/propos";
-    }
 
     @RequestMapping("/page/conseils")
     public String ConseilsPage() {
@@ -37,6 +31,10 @@ public class MainController {
     }
 
 
+   @RequestMapping("/layoutAdmin")
+    public String layoutAdmin() {
+        return "/layoutAdmin";
+    }
 
 
 }

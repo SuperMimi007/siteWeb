@@ -26,6 +26,7 @@ public class UserService {
     private UserRepository userRepository;
 
 
+
     public UserService(UserRepository userRepository) {
         this.userRepository=userRepository;
     }
@@ -43,7 +44,7 @@ public class UserService {
     }
 
    public String fonctionUserList(String titleName, Model model, ModelMap modelMap,@Param("keyword") String keyword) {
-        List<User> listUsers = listAll(keyword);
+       List<User> listUsers = listAll(keyword);
         model.addAttribute("listUsers", listUsers);
         model.addAttribute("keyword",keyword);
         modelMap.put("titleName", titleName);

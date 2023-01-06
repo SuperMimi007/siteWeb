@@ -1,0 +1,76 @@
+
+/*-----------------Content-----------------*/
+#content{
+    display :flex;
+    flex-wrap: wrap;
+}
+
+
+div#content div.leftBox{
+    vertical-align: top;
+    border: 1px #222E13;
+    width: 50%;
+}
+
+p{
+    padding: 10px;
+    margin: 10px auto;
+    text-align: justify;
+}
+
+.prez{
+    text-justify: inter-word;
+
+}
+
+
+
+div#content div.rightBox{
+    width: 50%;
+}
+
+.lienPresta{
+    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.prestaBox{
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-width: 350px;
+    height: 500px;
+    /*flex:1;*/
+}
+
+.conseil{
+    background-image: url("images/arrivee.jpeg");
+}
+
+.cours{
+    background-image: url("images/ninaEduc.jpg");
+}
+
+.balade{
+    background-image: url("images/chienPromenade.jpeg");
+}
+
+.coaching{
+    background-image: url("images/maison.jpg");
+}
+
+.prestaDetails {
+    background-color: #222E13;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 20px;
+}
+
+.prestaName{
+    font-size: 22px;
+    font-weight: 600;
+    color: #c3e6cb;
+    text-align: center;
+}

@@ -38,12 +38,6 @@ public class DogService {
         return "admin/gestionDog";
     }
 
-    //----------- PAGINATION -----------//
-
-
-
-
-
     //----------- FORMULAIRE----------//
 
 

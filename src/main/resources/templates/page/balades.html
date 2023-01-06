@@ -1,93 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
-    <meta charset="UTF-8">
-    <title>balades</title>
-    <link th:href="@{/main.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Un amour de chien 93</title>
+    <link rel="stylesheet" th:href="@{/layoutHomePage.css}"/>
+    <link rel="stylesheet" th:href="@{/prestation.css}"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap"
+          rel="stylesheet"/>
 </head>
+
 <body>
-<nav>
-    <div class="bannerTop">
-        <div><img th:src="@{../images/logo.jpg}" id="logo_img"/></div>
-        <h1>Un amour de chien 93</h1>
-        <nav>
-            <a th:href="@{/AmourChien93}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-house-door"
-                     viewBox="0 0 16 16">
-                    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
-                </svg>
-            </a>
-            <a th:href="@{/page/propos}">A propos</a>
-        </nav>
-    </div>
-</nav>
+
+<nav th:replace="layoutHomePage :: menu">Static Header</nav>
 
 
-<div class="bannerConnection">
-    <h2>Education Canine</h2>
-</div>
-<div class="bannerMiddleCons">
-    <div class="block1Cons">
-        <img th:src="@{../images/chienPromenade.jpeg}" id="conseilsImage"/>
-    </div>
 
-    <div class="block2Cons">
-        <p id="titPrins">Balades éducatives</p>
-        <p class="timingCons">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-alarm" viewBox="0 0 16 16">
-                <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
-                <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
-            </svg> 30 minutes</p>
-        <p class="titreCons"> Déroulement de la séance</p>
-        <p> => Balade dans un Parc ou en forêt.<br/>
-            => Apprentissage ou perfectionnement de la marche en laisse,du rappel, de la rencontre avec d’autres chiens, etc...<br/>
-            => Présence possible pour les maîtres afin de perfectionner leur éducation et comprendre la relation.<br/>
-            => chien/maitre et chien entre eux. (Abords pratique et théorique).<br/>
-            => Le chien est récupéré et ramené au domicile de ses maîtres en leur absence.</p>
+<div layout :fragment="content">
+    <div id="content">
+
+        <div class="balade">
+        </div>
+
+        <div class="rightBox">
+            <h2> Balades éducatives</h2>
+            <br/>
+            <br/>
+            <p> La prestation comprend :</p>
+            <ul>
+                <li>un entretien téléphonique au préalable (identification d'une problématique ou demande particulière).</li>
+                <li>Je vous donnerais la liste des questions à poser à l’éleveur.</li>
+                <li>Bilan téléphonique dans un temps donné selon la problématique ou l’âge du chien.</li>
+                <li>Après la rencontre à votre domicile, une synthèse vous sera envoyé par mail dans les 3 jours.</li>
+                <li> A tout moment je reste en contact avec vous par téléphone en cas de besoin.</li>
+            </ul>
+            <p> Je vous accompagnerais :</p>
+            <ul>
+                <li>lors d'une balade dans un Parc ou en forêt.</li>
+                <li> dans l'apprentissage ou perfectionnement de la marche en laisse,du rappel, de la rencontre avec d’autres chiens, etc...</li>
+                <li>dans la compréhension duc omportement chien/maitre et chien entre eux. (Abords pratique et théorique).</li>
+            </ul><br/>
+
+                <p style="text-align: center">Présence possible pour les maîtres afin de perfectionner leur éducation et comprendre la relation.</p>
+                <p style="text-align: center">Le chien est récupéré et ramené au domicile de ses maîtres en leur absence.</p>
+            <br/>
+        </div>
     </div>
 </div>
 
-<div class="bannerFooter">
-    <div class="contact">
-        <div class="infos">
-            <a><svg xmlns="http://www.w3.org/2000/svg" width="auto" height="35" fill="#c3e6cb"
-                    class="bi bi-phone-vibrate"
-                    viewBox="0 0 16 16">
-                <path d="M10 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4zM6 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6z"/>
-                <path d="M8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM1.599 4.058a.5.5 0 0 1 .208.676A6.967 6.967 0 0 0 1 8c0 1.18.292 2.292.807 3.266a.5.5 0 0 1-.884.468A7.968 7.968 0 0 1 0 8c0-1.347.334-2.619.923-3.734a.5.5 0 0 1 .676-.208zm12.802 0a.5.5 0 0 1 .676.208A7.967 7.967 0 0 1 16 8a7.967 7.967 0 0 1-.923 3.734.5.5 0 0 1-.884-.468A6.967 6.967 0 0 0 15 8c0-1.18-.292-2.292-.807-3.266a.5.5 0 0 1 .208-.676zM3.057 5.534a.5.5 0 0 1 .284.648A4.986 4.986 0 0 0 3 8c0 .642.12 1.255.34 1.818a.5.5 0 1 1-.93.364A5.986 5.986 0 0 1 2 8c0-.769.145-1.505.41-2.182a.5.5 0 0 1 .647-.284zm9.886 0a.5.5 0 0 1 .648.284C13.855 6.495 14 7.231 14 8c0 .769-.145 1.505-.41 2.182a.5.5 0 0 1-.93-.364C12.88 9.255 13 8.642 13 8c0-.642-.12-1.255-.34-1.818a.5.5 0 0 1 .283-.648z"/>
-            </svg></a>
-            <a> 0613183668</a>
-        </div>
-        <div class="infos">
-            <a><svg xmlns="http://www.w3.org/2000/svg" width="auto" height="35" fill="#c3e6cb"
-                    class="bi bi-mailbox"
-                    viewBox="0 0 16 16">
-                <path d="M4 4a3 3 0 0 0-3 3v6h6V7a3 3 0 0 0-3-3zm0-1h8a4 4 0 0 1 4 4v6a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V7a4 4 0 0 1 4-4zm2.646 1A3.99 3.99 0 0 1 8 7v6h7V7a3 3 0 0 0-3-3H6.646z"/>
-                <path d="M11.793 8.5H9v-1h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.354-.146l-.853-.854zM5 7c0 .552-.448 0-1 0s-1 .552-1 0a1 1 0 0 1 2 0z"/>
-            </svg></a>
-            <a>unamourdechien93@gmail.com</a>
-        </div>
-    </div>
-    <nav>
-        <div class="lien">
-            <a href="https://www.facebook.com/myriambruguiere93/"  target="_blank" >
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#c3e6cb"
-                     class="bi bi-facebook"
-                     viewBox="0 0 16 16">
-                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                </svg>
-            </a>
-            <a href="https://instagram.com/unamourdechien93?igshid=YmMyMTA2M2Y=" target="_blank" >
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#c3e6cb"
-                     class="bi bi-instagram"
-                     viewBox="0 0 16 16">
-                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
-                </svg>
-            </a>
-        </div>
-    </nav>
-</div>
+
+<nav th:replace="layoutHomePage :: html_foot">Static Footer</nav>
 </body>
 </html>
+

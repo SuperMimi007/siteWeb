@@ -50,8 +50,7 @@ class UserControllerTest {
 
 
 
-
-  /*@Test
+/*  @Test
     public void testGestionUser() throws Exception {
         List<User> userList = new ArrayList<>();
             userList.add(new User(1, "Roulio", "Argi", "roulio@gmail.com", "Roulio", "01.62.53.95.96", "17 rue des prés 93160 Noisy le grand", "google", Role.ADMIN));
@@ -76,7 +75,7 @@ class UserControllerTest {
    @Test
         public void testNewUser() throws Exception {
         this.mockMvc
-            .perform(post("/admin/gestionUser/save")
+            .perform(get("/admin/gestionUser/new")
                 .param("email","richard@gmail.com")
                 .param("userFirstName","Richard")
                 .param("userLastName","gere")
@@ -88,6 +87,23 @@ class UserControllerTest {
                 .with(csrf()))
         .andExpect(status().is3xxRedirection())
         .andExpect(header().string("Location","/admin/gestionUser/new"));
+    }
+
+    @Test
+    public void testSaveUser() throws Exception {
+        this.mockMvc
+                .perform(post("/admin/gestionUser/save")
+                        .param("email","richard@gmail.com")
+                        .param("userFirstName","Richard")
+                        .param("userLastName","gere")
+                        .param("password","Test123")
+                        .param("address","3allée des souches 93160 Noisy")
+                        .param("phone","01.62.36.65.63")
+                        .param("contact","vétérinaire")
+                        .param("Role", String.valueOf(Role.USER))
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(header().string("Location","/admin/gestionUser/new"));
     }
 
 }

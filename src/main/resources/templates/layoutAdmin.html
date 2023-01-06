@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Un amour de chien 93</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap"
+          rel="stylesheet"/>
+</head>
+<body>
+
+
+<nav th:fragment="menu" class="header">
+    <a class="nav-icon-header" aria-label="visit homepage" aria-current="page" th:href="@{/AmourChien93}">
+        <img data-th-src="@{../images/logo.jpg}" alt="logo">
+        <span>Gestion Administratif</span>
+    </a>
+</nav>
+
+<div id="content">
+    <div th:fragment="content">
+        <p>Changing contents</p>
+    </div>
+</div>
+
+
+<nav th:fragment="html_foot" class="footer">
+      <div >&copy; 2022 - Un Amour de Chien93 -Tous droits réservés</div>
+</nav>
+
+
+</body>
+</html>
