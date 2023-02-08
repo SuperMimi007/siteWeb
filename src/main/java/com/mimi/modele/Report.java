@@ -5,7 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Arrays;
+
 
 @Getter
 @Setter
@@ -20,7 +20,7 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reportId;
 
-    @Column(length =100,nullable = false,unique = true)
+    @Column(length = 100, nullable = false, unique = true)
     private String reportName;
 
     private Date uploadTime;
@@ -29,15 +29,15 @@ public class Report {
 
     private long size;
 
-    @Column(length =45)
-    private byte [] content;
+    @Column(length = 45)
+    private byte[] content;
 
 
-
-
-/*    @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "dog_id")
-    private Dog dog;*/
+    private Dog dog;
 
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

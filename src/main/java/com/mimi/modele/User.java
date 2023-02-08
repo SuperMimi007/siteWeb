@@ -22,10 +22,10 @@ public class User {
     @Column(name="id")
     private Integer userId;
 
-    @Column(unique = true, length = 40)
+    @Column(length = 40)
     private String email;
 
-    @Column(nullable = false,length = 20)
+    @Column(length = 20)
     private String userLastName;
 
     @Column(length = 20)
@@ -34,7 +34,7 @@ public class User {
     @Column(length = 64)
     private String password;
 
-    @Column(nullable = false,length = 90)
+    @Column(length = 90)
     private String address;
 
     @Column(length = 20)

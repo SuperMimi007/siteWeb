@@ -34,7 +34,7 @@ public class DogService {
         List<Dog> listDogs=listAll(keyword);
         modelMap.put("titleName",titleName);
         model.addAttribute("listDogs", listDogs);
-            model.addAttribute("keyword",keyword);
+        model.addAttribute("keyword",keyword);
         return "admin/gestionDog";
     }
 

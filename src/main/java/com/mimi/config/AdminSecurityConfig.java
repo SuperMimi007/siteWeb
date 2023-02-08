@@ -15,14 +15,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @Order(1)
 public class AdminSecurityConfig {
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new LoginUserDetailsService();
     }
 
 
     @Bean
-    public AuthenticationProvider authProvider(){
-        DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
+    public AuthenticationProvider authProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService());
         provider.setPasswordEncoder(new BCryptPasswordEncoder());
         return provider;
@@ -43,6 +43,9 @@ public class AdminSecurityConfig {
                 .loginProcessingUrl("/admin/login")
                 .defaultSuccessUrl("/admin/gestionUser")
                 .permitAll()
+                .and()
+                //.rememberMe().userDetailsService(userDetailsService())
+                .rememberMe().key("Babou1234")
                 .and()
                 .logout()
                 .logoutUrl("/admin/logout")

@@ -48,7 +48,7 @@ public class DogServiceTest {
     }
 
 
-    @DisplayName("Junit test SaveDog")
+    @DisplayName("Should save dog")
     @Test
     public void testSaveDog(){
         //given - pre condition
@@ -61,7 +61,7 @@ public class DogServiceTest {
     }
 
 
-    @DisplayName("Junit DogsList")
+    @DisplayName("Should return DogsList")
     @Test
     public void testGetAllDogs(){
         //given - pre condition

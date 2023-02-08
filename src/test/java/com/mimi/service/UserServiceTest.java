@@ -2,7 +2,11 @@
 package com.mimi.service;
 
 import com.mimi.config.Role;
+import com.mimi.controller.UserController;
 import com.mimi.exception.UserNotFoundException;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.mimi.modele.User;
 import com.mimi.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,38 +15,42 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.repository.query.Param;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.ui.Model;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ModelMap;
 
 import java.util.List;
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
 
-    @Mock
-    private UserRepository userRepoMock;
-    @InjectMocks
-    private UserService userImpl;
 
+    @InjectMocks
+    private UserController userController;
+
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private UserService userService;
+
+    private MockMvc mockMvc;
 
     private User user;
-    private Model model;
 
     @BeforeEach
-    public void setup() {
-        user = User.builder()
+  public void setup() {
+  mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+
+//     userRepository= Mockito.mock(UserRepository.class);
+//        userService = new UserService(userRepository);
+      user = User.builder()
                 .userId(1)
                 .userFirstName("Dorra")
                 .userLastName("Explo")
@@ -55,24 +63,11 @@ public class UserServiceTest {
                 .build();
     }
 
-
-    @DisplayName("Junit test SaveUser")
+    @DisplayName("Should return UsersList")
     @Test
-    public void testSaveUser() {
+    void testfonctionUserList() throws Exception {
         //given - pre condition
-        given(userRepoMock.save(user))
-                .willReturn(user);
-        //when - behaviour to test
-        User savedUser = userImpl.saveUser(user);
-        //then - verify the ouput
-        assertThat(savedUser).isNotNull();
-    }
-
-    @DisplayName("Junit UsersList")
-    @Test
-    public void testGetAllUsers() {
-        //given - pre condition
-        User user1 = User.builder()
+        User user2 = User.builder()
                 .userId(2)
                 .userFirstName("Eric")
                 .userLastName("Ploit")
@@ -84,18 +79,103 @@ public class UserServiceTest {
                 .contact("google")
                 .build();
 
-        given(userRepoMock.findAll()).willReturn(List.of(user, user1));
+        User user3 = User.builder()
+                .userId(3)
+                .userFirstName("Dorra")
+                .userLastName("Explo")
+                .email("dorra@gmail.com")
+                .password("test123")
+                .phone("01.64.02.96.32")
+                .address("46 impasse des Lilas, 93160 Noisy le Grand")
+                .role(Role.valueOf("USER"))
+                .contact("vétérinaire")
+                .build();
+        given(userRepository.findAll()).willReturn(List.of(user2,user3));
+        ModelMap titleName = new ModelMap();
         //when - behaviour to test
-        List<User> usersList = userImpl.getAllUsers();
-        System.out.println(usersList);
+        List<User> listUsers = userRepository.findAll();
+        ResultActions response = mockMvc.perform(get("/admin/gestionUser"));
         //then - verify the ouput
-        assertThat(usersList).isNotNull();
-        assertThat(usersList.size()).isEqualTo(2);
+        assertThat(listUsers).isNotNull();
+        assertThat(listUsers).hasSizeGreaterThan(0);
+        assertThat(listUsers.size()).isEqualTo(2);
+        assertThat(titleName).isNotNull();
+        response.andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-}
+/*    @DisplayName("Should return a user by his ID")
+    @Test
+    public void testGetUser() throws UserNotFoundException {
+        //given - pre condition
+        given(userRepository.findById(1)).willReturn(Optional.of(user));
 
+        //when - behaviour to test
+        //User savedUser = userService.get(user.getUserId()).getUserId();
+        //then - verify the ouput
+        assertThat(savedUser).isNotNull();
+
+    }*/
+
+}
 /*
+
+    @DisplayName(" Should return UserForm")
+    @Test
+    void testFonctionUserForm() throws Exception {
+        User user = new User();
+        String formTitle = "Ajout";
+
+        mockMvc
+                .perform(MockMvcRequestBuilders.post("/admin/userForm)"))
+                .andExpect(MockMvcResultMatchers.model().attribute("formTitle", formTitle));
+    }
+
+@DisplayName("Junit test SaveUser")
+    @Test
+    public void testSaveUser() {
+     //given - pre condition
+     given(userRepoMock.save(user))
+             .willReturn(user);
+     //when - behaviour to test
+     User savedUser = userImpl.saveUser(user);
+     //then - verify the ouput
+     assertThat(savedUser).isNotNull();
+
+ }*/
+
+
+
+    /*     @DisplayName("Test add a new user")
+     @Test
+     public void testFonctionSaveUser () {
+         //je veux ajouter un utilisateur
+         //Given les infos de l'utilisateur
+         //When j'enregistre l'utilisateur
+         //then mon utilisateur est ajouté
+         //given - pre condition
+         given(userRepoMock.save(user))
+                 .willReturn(user);
+         //when - behaviour to test
+         User savedUser = userImpl.saveUser(user);
+         //then - verify the ouput
+         assertThat(savedUser).isNotNull();
+     }*/
+     /*
+@DisplayName(" Should return UserForm")
+    @Test
+    void testFonctionUserForm() throws Exception {
+
+        String formTitle = "Ajoutd'un nouvel utilisateur";
+        mockMvc
+                .perform(MockMvcRequestBuilders.get("/admin/userForm)"))
+                .andExpect(MockMvcResultMatchers.model().attributeExists("user"))
+                .andExpect(MockMvcResultMatchers.model().attributeExists("formTitle"));
+
+    }
+
+*/
+/*
+
         Mockito.doNothing()
                 .when(userRepoMock).deleteById(user.getUserId());
         try {

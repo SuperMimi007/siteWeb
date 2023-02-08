@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ReportRepository extends JpaRepository<Report, Integer> {
+
     List<Report> findAll();
 
     @Query(value="SELECT r FROM Report r WHERE "

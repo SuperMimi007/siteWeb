@@ -1,23 +1,51 @@
-.userForm{
+*{
+    font-family: Montserrat, Helvetica, sans-serif;
+}
+
+
+.reportForm{
     text-align: center;
-    padding-top: 10px;
-    color : #222E13;
+    padding-top: 5px;
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
 
 }
 
-form{
+.forms{
     max-width: 500px;
     margin: 0 auto;
     background-color: #222E13;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
+
 label{
-    color: white;
-    font-weight: bold;
+    color: #FFFFFF;
+    margin-right: 20px;
+
+}
+
+
+#master{
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#friend{
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#rdv {
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#upload {
+    color: red;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 #container{
@@ -30,7 +58,7 @@ h2{
 
 .btAdForm{
     background-color: #c3e6cb;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     color: #222E13;
     padding: 10px;

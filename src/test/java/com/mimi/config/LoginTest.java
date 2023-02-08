@@ -2,6 +2,7 @@ package com.mimi.config;
 import com.mimi.modele.User;
 import com.mimi.repository.UserRepository;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -15,14 +16,16 @@ import java.util.List;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 
+
+@DisplayName("Should find UserById")
 public class LoginTest {
     @Autowired
     private UserRepository userRepo;
 
-   /* @Test
+   @Test
     public void testFindUserByEmail() {
         String email = "emilie@gmail.com";
         User user = userRepo.findByEmail(email);
         Assertions.assertThat(user).isNotNull();
-    }*/
+    }
 }

@@ -12,19 +12,20 @@
 </head>
 <body>
 
-
-    <nav th:fragment="menu" class="header">
-        <a class="nav-icon-header" aria-label="visit homepage" aria-current="page" th:href="@{/AmourChien93}">
-            <img data-th-src="@{../images/logo.jpg}"  alt="logo">
-            <span>Un amour de chien 93</span>
-        </a>
-        <div class="nav-authentication">
-            <div class="sign-btns">
-                <a data-th-href="@{/admin/login}">Connexion Admin</a>
-                <a data-th-href="@{/client/login}">Connexion Client</a>
-            </div>
+<nav th:fragment="menu" class="header">
+    <a class="nav-icon-header" aria-label="visit homepage" aria-current="page" th:href="@{/AmourChien93}">
+        <img data-th-src="@{../images/logo.jpg}" alt="logo">
+        <span>Un amour de chien 93</span>
+    </a>
+    <div class="nav-authentication">
+        <div class="sign-btns">
+            <form th:action="@{/client/login}" method="post">
+                <input id="submit" type="submit" value="Déconnexion">
+            </form>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <div id="content">
         <div th:fragment="content">

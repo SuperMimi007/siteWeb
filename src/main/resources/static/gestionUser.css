@@ -82,6 +82,10 @@ table {
     border: 2px #222E13;
 }
 
+.icone{
+    text-decoration: none;
+}
+
 svg{
     width:30px;
     height:30px;

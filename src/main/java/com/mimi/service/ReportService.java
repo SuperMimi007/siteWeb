@@ -5,17 +5,16 @@ import com.mimi.modele.Report;
 import com.mimi.modele.User;
 import com.mimi.repository.DogRepository;
 import com.mimi.repository.ReportRepository;
+import com.mimi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -27,7 +26,10 @@ public class ReportService {
 
     @Autowired
     private ReportRepository reportRepository;
+    @Autowired
     private DogRepository dogRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     //----------- LISTE USERS + RECHERCHE/FILTRE -----------//
     public List<Report> listAll(String keyword) {
@@ -46,9 +48,11 @@ public class ReportService {
     }
 
     public String fonctionReportForm(Model model) {
-//        List<Dog> dogsName = dogRepository.findAll();
-//        model.addAttribute("dogsName",dogsName);
+/*        List<User> usersName = userRepository.findAll();
+        model.addAttribute("usersName",usersName);*/
         model.addAttribute("report", new Report());
+        List<Dog> dogsName = dogRepository.findAll();
+        model.addAttribute("dogsName",dogsName);
         model.addAttribute("formTitle", "Ajout d'un nouvel compte rendu");
         return "admin/reportForm";
     }
@@ -59,7 +63,6 @@ public class ReportService {
         report.setReportName(reportName);
         report.setContent(multipartFile.getBytes());
         report.setSize(multipartFile.getSize());
-        // report.setDateOfReport((java.sql.Date) new Date());
         reportRepository.save(report);
         ra.addFlashAttribute("message", "Fichier télécharger avec succès " + reportName + '!');
         return "redirect:/admin/gestionReport";

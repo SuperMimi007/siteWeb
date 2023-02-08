@@ -30,11 +30,13 @@ public class MainController {
         return "page/coaching";
     }
 
+/*
 
    @RequestMapping("/layoutAdmin")
     public String layoutAdmin() {
         return "/layoutAdmin";
     }
+*/
 
 
 }
