@@ -1,9 +1,12 @@
+---
 # Application Web
 Projet de fin d'année pour le RCNP "Un amour de chien 93"
 
 <p align="center">
 <img align="center" width="20%" src="https://github.com/SuperMimi007/siteWeb/blob/main/src/main/resources/static/images/logo.jpg"/>
  </p>
+
+---
 
 ## Introduction
 Création d'une application web pour une société souhaitant :
@@ -17,7 +20,7 @@ Le projet est construit avec une architecture en couche (Controller-Service-Repo
 Le dossier resources/static/templates : contient la partie front, visible de l'utilisateur. 
 Il est contient 3 sous dossiers
 
-##Stack Technique
+## Stack Technique
   * **Le language** : Java
   * **Framework** : Spring Boot/Mockito/Hibernate/Lombok
   * **Outil** : Maven
@@ -25,7 +28,7 @@ Il est contient 3 sous dossiers
   * **Tests** : JUnit
   * **FrontEnd** : Thymleaf (BootStrap)
 
-##Comment utiliser le projet
+## Comment utiliser le projet
 Afin d'utiliser ce projet il vous faudra installer :
 * MySql 
 * IntelliJ : 2021.2.3
@@ -35,7 +38,7 @@ Ensuite il faudra lancer "MyProjectApplication" dans IntelliJ et lancer dans le 
 
 ---
 
-##licence & copyright
+## Licence & copyright
 © Emilie
 
 ---
