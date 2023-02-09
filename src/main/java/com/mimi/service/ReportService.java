@@ -76,7 +76,7 @@ public class ReportService {
         Report report = result.get();
         response.setContentType("application/octet-stream");
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment;reportName=" + report.getReportName();
+        String headerValue = "attachment reportName=" + report.getReportName();
         response.setHeader(headerKey, headerValue);
         ServletOutputStream outputStream = response.getOutputStream();
         outputStream.write(report.getContent());

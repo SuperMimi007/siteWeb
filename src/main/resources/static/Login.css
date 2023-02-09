@@ -1,5 +1,5 @@
 form{
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     background-color: #222E13;
 }
@@ -18,10 +18,15 @@ td{
     color: #c3e6cb;
     font-weight: bold;
 }
-
-
+.error{
+    background-color: bisque;
+    alignment: center;
+    padding: 20px;
+    margin: 30px 150px 30px 150px;
+}
 h4{
     color: darkred;
+    font-weight: bold;
     text-align: center;
     font-style: italic;
 }

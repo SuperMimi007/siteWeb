@@ -31,6 +31,8 @@ public class UserController {
         return "client/clientLogin";
     }
 
+
+
     //----------- ENDPOINT USER  LIST + PAGE GESTION USER -----------//
 
 
@@ -85,4 +87,7 @@ public class UserController {
         }
         return "redirect:/admin/gestionUser";
     }
+
+
 }
+

@@ -1,6 +1,6 @@
 ---
-# Application Web
-Projet de fin d'année pour le RCNP "Un amour de chien 93"
+# Projet de fin d'année pour le RCNP "Un amour de chien 93"
+
 
 <p align="center">
 <img align="center" width="20%" src="https://github.com/SuperMimi007/siteWeb/blob/main/src/main/resources/static/images/logo.jpg"/>
@@ -11,14 +11,15 @@ Projet de fin d'année pour le RCNP "Un amour de chien 93"
 ## Introduction
 Création d'une application web pour une société souhaitant :
 * donner de la visibilité à son business
+* présentation de son activité et des prestations proposées
 * accès sécurisés à des espaces dédiés pour ses clients (accès factures, comptes-rendus + téléchargements)
 * accès sécurisés pour les administrateur pour la gestion de la base de donnée
 
 
 ## Descriptif du projet
 Le projet est construit avec une architecture en couche (Controller-Service-Repository)
-Le dossier resources/static/templates : contient la partie front, visible de l'utilisateur. 
-Il est contient 3 sous dossiers
+Le dossier resources/static/templates : contient la partie front, visible de l'utilisateur.
+templates est divisé 3 sous dossiers (admin, client, page) + les layout et la home page.
 
 ## Stack Technique
   * **Le language** : Java

@@ -25,6 +25,8 @@ public class ClientSecurityConfig {
                 .defaultSuccessUrl("/client/pageClient")
                 .permitAll()
                 .and()
+                .rememberMe().key("Babou1234")
+                .and()
                 .logout()
                 .logoutUrl("/client/logout")
                 .logoutSuccessUrl("/AmourChien93");

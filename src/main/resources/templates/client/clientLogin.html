@@ -3,36 +3,45 @@
     <meta charset="ISO-8859-1">
     <title>Client Login</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-    <link th:href="@{/login.css}" rel="stylesheet" />
+    <link th:href="@{/login.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="loginForm"><h2>Connexion Client</h2></div>
+
+
+<div class="error" th:if="${param.error}">
+    <h4>[[${"identifiants incorrects, veuillez essayer a nouveau !"}]]</h4>
+</div>
+
 <form th:action="@{/client/login}" method="post" style="max-width: 400px; margin: 0 auto;">
-
-
-    <div th:if="${param.error}">
-        <h4 style="color: red">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</h4>
-    </div>
-
     <table>
-        <tr><td>&nbsp;</td></tr>
         <tr>
-            <td>E-mail: </td>
-            <td><input type="email" name="email" required /></td>
-        </tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr>
-            <td>Mot de passe: </td>
-            <td><input type="password" name="password" required /></td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>Se souvenir de moi </td>
-            <td><input type="checkbox" id ="remember" name="remember-me" required /></td>
+            <td>E-mail:</td>
+            <td><input type="email" name="email" required/></td>
         </tr>
-        <tr><td>&nbsp;</td></tr>
         <tr>
-            <td ><input class ="btAdForm" type="submit" value="Connexion" /></td>
-            <td ><input class ="btAdForm" type="button" value="Annuler" onclick="cancel()" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Mot de passe:</td>
+            <td><input type="password" name="password" required/></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Se souvenir de moi</td>
+            <td><input type="checkbox" id="remember" name="remember-me" required/></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><input class="btAdForm" type="submit" value="Connexion"/></td>
+            <td><input class="btAdForm" type="button" value="Annuler" onclick="cancel()"/></td>
         </tr>
     </table>
 </form>

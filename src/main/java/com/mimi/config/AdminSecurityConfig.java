@@ -44,7 +44,6 @@ public class AdminSecurityConfig {
                 .defaultSuccessUrl("/admin/gestionUser")
                 .permitAll()
                 .and()
-                //.rememberMe().userDetailsService(userDetailsService())
                 .rememberMe().key("Babou1234")
                 .and()
                 .logout()

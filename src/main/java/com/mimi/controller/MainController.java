@@ -1,6 +1,7 @@
 package com.mimi.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -30,13 +31,6 @@ public class MainController {
         return "page/coaching";
     }
 
-/*
-
-   @RequestMapping("/layoutAdmin")
-    public String layoutAdmin() {
-        return "/layoutAdmin";
-    }
-*/
 
 
 }
